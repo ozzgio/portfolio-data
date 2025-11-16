@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Designing a Two-Sided Platform in Rails",
+    "date": "2025-11-09",
+    "description": "Trainers, Athletes, and the Power of Context",
+    "url": "https://www.linkedin.com/pulse/designing-two-sided-platform-rails-trainers-athletes-power-ozzola-bstwf",
+    "thumbnail": "designing-rails-platform.jpg",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Building Coach-Ready Features",
+    "date": "2025-11-02",
+    "description": "From Invitations to Program Builder",
+    "url": "https://www.linkedin.com/pulse/synergym-now-coach-ready-invitation-flow-program-builder-ozzola-3syhf/",
+    "thumbnail": "building-coach-ready-features.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Going Live with Google Auth",
+    "date": "2025-10-26",
+    "description": "Making Synergym Safer, One Login at a Time",
+    "url": "https://www.linkedin.com/pulse/going-live-google-auth-making-synergym-safer-one-login-giorgio-ozzola-ukbpf",
+    "thumbnail": "going-live-google-auth.jpg",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "The One-Man Framework",
+    "date": "2025-10-19",
+    "description": "Why Rails Beats JavaScript for My SaaS Velocity",
+    "url": "https://www.linkedin.com/pulse/one-man-framework-why-rails-beats-javascript-my-saas-velocity-ozzola-xrgrf",
+    "thumbnail": "one-man-framework.png",
+    "tags": [
+      "Tech"
+    ]
+  }
+]

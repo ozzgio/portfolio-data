@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+Desktop.ini
+
+# Temporary and backup files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.log
+
+# Environment and secrets (SENSITIVE)
+.env
+.env.local
+.env.*.local
+*.env
+secrets.*
+credentials.*
+*.key
+*.pem
+config.local.*
+
+# Personal notes and drafts
+notes/
+drafts/
+personal/
+TODO.md
+NOTES.md
+scratch/
+*.md.bak
+
+# Test files
+test_*.json
+*_test.json
+fixtures/
+test_data/
+
+# Large archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Obsidian (if accidentally copied)
+.obsidian/
+
+# Node modules (if any JS tools added)
+node_modules/
+package-lock.json

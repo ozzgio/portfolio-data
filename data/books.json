@@ -1,0 +1,73 @@
+[
+  {
+    "title": "Meditations",
+    "author": "Marcus Aurelius",
+    "cover": "https://images.unsplash.com/photo-1727407467512-5093b3ac99b4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFyY3VzJTIwYXVyZWxpdXN8ZW58MHx8MHx8fDA%3D",
+    "rating": 5.0,
+    "url": "",
+    "tags": [
+      "Philosophy"
+    ]
+  },
+  {
+    "title": "The art of war",
+    "author": "Sun Tzu",
+    "cover": "https://images.pexels.com/photos/17642882/pexels-photo-17642882/free-photo-of-sculpture-of-terracotta-army.jpeg",
+    "rating": 4.0,
+    "url": "",
+    "tags": [
+      "Philosophy"
+    ]
+  },
+  {
+    "title": "Rich dad poor dad",
+    "author": "Robert Kiyosaki",
+    "cover": "https://images.pexels.com/photos/16764649/pexels-photo-16764649.jpeg",
+    "rating": 4.0,
+    "url": "",
+    "tags": [
+      "Finance"
+    ]
+  },
+  {
+    "title": "4 Hours work week",
+    "author": "Tim Ferris",
+    "cover": "https://i.imgur.com/K3cEkUX.jpeg",
+    "rating": 4.0,
+    "url": "",
+    "tags": [
+      "Work"
+    ]
+  },
+  {
+    "title": "The Richest Man in Babylon",
+    "author": "George S. Clason",
+    "cover": "https://images.unsplash.com/photo-1720774401477-032ba6a13072?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "rating": 3.5,
+    "url": "",
+    "tags": [
+      "Finance",
+      "Philosophy"
+    ]
+  },
+  {
+    "title": "The Psychology of Money",
+    "author": "Morgan Housel",
+    "cover": "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "rating": 3.0,
+    "url": "",
+    "tags": [
+      "Finance"
+    ]
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "cover": "https://images.pexels.com/photos/6583688/pexels-photo-6583688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "rating": 3.0,
+    "url": "",
+    "tags": [
+      "Philosophy"
+    ]
+  }
+]
