@@ -1,5 +1,15 @@
 [
   {
+    "title": "From v1.4 to v2.9: 303 Commits in 30 Days",
+    "date": "2025-11-30",
+    "description": "What 303 commits taught me about rapid iteration and building in public",
+    "url": "",
+    "thumbnail": "from-v1-to-v2-9-303-commits.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
     "title": "Completing the Platform Loop: 35 Days of Building Synergym",
     "date": "2025-11-17",
     "description": "Workout logging, progress visualization, and user preferences complete the athlete experience",
