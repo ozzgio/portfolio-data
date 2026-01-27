@@ -7,7 +7,8 @@
     "url": "",
     "tags": [
       "Philosophy"
-    ]
+    ],
+    "lesson": "In writing and reading you must learn before teach."
   },
   {
     "title": "The art of war",
@@ -17,7 +18,8 @@
     "url": "",
     "tags": [
       "Philosophy"
-    ]
+    ],
+    "lesson": "If you know your enemy and yourself, you will not fear 100 battles."
   },
   {
     "title": "Rich dad poor dad",
@@ -27,7 +29,8 @@
     "url": "",
     "tags": [
       "Finance"
-    ]
+    ],
+    "lesson": "If you can’t manage yourself you can’t control money"
   },
   {
     "title": "4 Hours work week",
@@ -37,7 +40,8 @@
     "url": "",
     "tags": [
       "Work"
-    ]
+    ],
+    "lesson": "Optimization is the key.\nEverything you do you should do with purpose."
   },
   {
     "title": "The Richest Man in Babylon",
@@ -48,7 +52,8 @@
     "tags": [
       "Finance",
       "Philosophy"
-    ]
+    ],
+    "lesson": "Wealth grows wherever men exert energy."
   },
   {
     "title": "The Psychology of Money",
@@ -58,7 +63,8 @@
     "url": "",
     "tags": [
       "Finance"
-    ]
+    ],
+    "lesson": "Knowing when you have enough is the key to lasting happiness and avoiding unnecessary risk."
   },
   {
     "title": "The Alchemist",
@@ -68,6 +74,7 @@
     "url": "",
     "tags": [
       "Philosophy"
-    ]
+    ],
+    "lesson": "Maktub. Arabic for \"It is written.\""
   }
 ]
