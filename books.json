@@ -76,5 +76,17 @@
       "Philosophy"
     ],
     "lesson": "Maktub. Arabic for \"It is written.\""
+  },
+  {
+    "title": "Think and Grow Rich",
+    "author": "Napoleon Hill",
+    "cover": "https://unsplash.com/photos/a-pile-of-books-sitting-on-top-of-a-table-LGiTYXmU_v8",
+    "rating": 4.5,
+    "url": "",
+    "tags": [
+      "Finance",
+      "Philosophy"
+    ],
+    "lesson": "Firstly desire then consistency in actions, the only price to pay is temporary failure."
   }
 ]
