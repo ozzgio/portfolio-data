@@ -1,10 +1,10 @@
 [
   {
-    "title": "Platform Polish and Stability: This Week on Synergym",
+    "title": "Blog Translations and Admin UI: This Week on Synergym",
     "date": "2026-02-02",
-    "description": "Polish, stability, and small wins after the multi-language release",
+    "description": "BlogPost translations, Kramdown preview, admin blog UI, and content helpers",
     "url": "",
-    "thumbnail": "weekly-update-platform-polish-2026-02-02.png",
+    "thumbnail": "weekly-update-platform-polish-and-stability.png",
     "tags": [
       "Tech"
     ]
