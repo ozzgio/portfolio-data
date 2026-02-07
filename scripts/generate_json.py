@@ -210,7 +210,8 @@ def get_books(vault_root=None):
                     'cover': frontmatter.get('cover', ''),
                     'rating': rating,
                     'url': frontmatter.get('url', ''),
-                    'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else []
+                    'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else [],
+                    'lesson': (frontmatter.get('lesson', '') or body).strip()
                 }
                 books.append(book)
         except Exception as e:
