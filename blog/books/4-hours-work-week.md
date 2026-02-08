@@ -1,7 +1,7 @@
 ---
 title: "4 Hours work week"
 author: "Tim Ferris"
-cover: "https://i.imgur.com/K3cEkUX.jpeg"
+cover: "https://i.imgur.com/cCXCq6c.png"
 rating: 4.0
 tags:
   - Work
