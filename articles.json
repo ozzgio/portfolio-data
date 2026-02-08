@@ -1,5 +1,15 @@
 [
   {
+    "title": "Blog Translations and Admin UI: This Week on Synergym",
+    "date": "2026-02-02",
+    "description": "BlogPost translations, Kramdown preview, admin blog UI, and content helpers",
+    "url": "https://www.linkedin.com/pulse/blog-translations-admin-ui-giorgio-ozzola-jvwke",
+    "thumbnail": "weekly-update-platform-polish-and-stability.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
     "title": "Going Global: Multi-Language Support v2.20.5 - v2.26.0",
     "date": "2026-01-26",
     "description": "Internationalization, exercise translations, and multi-language support for trainers and athletes worldwide",
