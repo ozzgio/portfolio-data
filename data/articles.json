@@ -1,5 +1,25 @@
 [
   {
+    "title": "UI Polish and Search Components: This Week on Synergym (v2.27.0 - v2.28.7)",
+    "date": "2026-02-08",
+    "description": "Standardizing search inputs, responsive navbar fixes, and automated translation tools.",
+    "url": "https://www.linkedin.com/pulse/ui-polish-search-components-week-synergym-v2270-v2287-ozzola-vlyqf",
+    "thumbnail": "weekly-update-v2-28-7.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Blog Translations and Admin UI: This Week on Synergym",
+    "date": "2026-02-02",
+    "description": "BlogPost translations, Kramdown preview, admin blog UI, and content helpers",
+    "url": "https://www.linkedin.com/pulse/blog-translations-admin-ui-giorgio-ozzola-jvwke",
+    "thumbnail": "weekly-update-platform-polish-and-stability.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
     "title": "Going Global: Multi-Language Support v2.20.5 - v2.26.0",
     "date": "2026-01-26",
     "description": "Internationalization, exercise translations, and multi-language support for trainers and athletes worldwide",
