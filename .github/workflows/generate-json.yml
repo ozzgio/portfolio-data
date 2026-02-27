@@ -1,12 +1,12 @@
 name: Generate Articles and Books JSON
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'blog/**'
-      - 'scripts/generate_json.py'
+#  push:
+#    branches:
+#      - main
+#    paths:
+#      - 'blog/**'
+#      - 'scripts/generate_json.py'
   workflow_dispatch:
 
 jobs:
