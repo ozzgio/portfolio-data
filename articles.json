@@ -1,5 +1,16 @@
 [
   {
+    "title": "Standardizing UI & Translation Tooling in Synergym v2.28.10",
+    "date": "2026-02-27",
+    "description": "In this release, we've focused on refining our user interface and translation tooling to provide a more consistent and seamless experience across Synergym. Let's dive into the details of what we've accomplished.",
+    "url": "https://www.linkedin.com/pulse/standardizing-ui-translation-tooling-synergym-v22810-giorgio-ozzola-aiamf",
+    "thumbnail": "2026-02-27-standard-ui-translate.png",
+    "tags": [
+      "Tech",
+      "BuildInPublic"
+    ]
+  },
+  {
     "title": "UI Polish and Search Components: This Week on Synergym (v2.27.0 - v2.28.7)",
     "date": "2026-02-08",
     "description": "Standardizing search inputs, responsive navbar fixes, and automated translation tools.",
