@@ -1,1 +1,143 @@
-[]
+[
+  {
+    "title": "Standardizing UI & Translation Tooling in Synergym v2.28.10",
+    "date": "2026-02-27",
+    "description": "In this release, we've focused on refining our user interface and translation tooling to provide a more consistent and seamless experience across Synergym. Let's dive into the details of what we've accomplished.",
+    "url": "https://www.linkedin.com/pulse/standardizing-ui-translation-tooling-synergym-v22810-giorgio-ozzola-aiamf",
+    "thumbnail": "2026-02-27-standard-ui-translate.png",
+    "tags": [
+      "Tech",
+      "BuildInPublic"
+    ]
+  },
+  {
+    "title": "UI Polish and Search Components: This Week on Synergym (v2.27.0 - v2.28.7)",
+    "date": "2026-02-08",
+    "description": "Standardizing search inputs, responsive navbar fixes, and automated translation tools.",
+    "url": "https://www.linkedin.com/pulse/ui-polish-search-components-week-synergym-v2270-v2287-ozzola-vlyqf",
+    "thumbnail": "weekly-update-v2-28-7.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Blog Translations and Admin UI: This Week on Synergym",
+    "date": "2026-02-02",
+    "description": "BlogPost translations, Kramdown preview, admin blog UI, and content helpers",
+    "url": "https://www.linkedin.com/pulse/blog-translations-admin-ui-giorgio-ozzola-jvwke",
+    "thumbnail": "weekly-update-platform-polish-and-stability.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Going Global: Multi-Language Support v2.20.5 - v2.26.0",
+    "date": "2026-01-26",
+    "description": "Internationalization, exercise translations, and multi-language support for trainers and athletes worldwide",
+    "url": "https://www.linkedin.com/pulse/going-global-multi-language-support-v2205-v2260-giorgio-ozzola-8t7bf",
+    "thumbnail": "going-global-multi-language-support-v2205-v2260.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Dependency Updates and Maintenance: v2.20.5 - v2.20.10",
+    "date": "2025-12-28",
+    "description": "Security updates, performance improvements, and infrastructure maintenance",
+    "url": "https://www.linkedin.com/pulse/dependency-updates-maintenance-v2205-v22010-giorgio-ozzola-llqsf",
+    "thumbnail": "dependency-updates-and-maintenance-v2205-v2210.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Admin Tools, UI Polish, and Workout Reliability: v2.19.0 - v2.20.4",
+    "date": "2025-12-21",
+    "description": "Admin blog management, role management, calendar improvements, and workout completion fixes",
+    "url": "https://www.linkedin.com/pulse/admin-tools-ui-polish-workout-reliability-v2190-v2204-ozzola-duqze",
+    "thumbnail": "admin-tools-ui-polish-workout-reliability-v2190-v2204.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "SEO, Blog Platform, and Platform Polish: v2.14.0 - v2.18.2",
+    "date": "2025-12-14",
+    "description": "SEO foundation, blog platform, and platform polish",
+    "url": "https://www.linkedin.com/pulse/seo-blog-platform-polish-v2140-v2182-giorgio-ozzola-4k7gf",
+    "thumbnail": "seo-blog-platform-polish-v2140-v2182.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Workout Improvements and Mobile UX: v2.12.0",
+    "date": "2025-12-08",
+    "description": "Mobile-first workout improvements, past workouts page, and sticky navbar with timer",
+    "url": "https://www.linkedin.com/pulse/workout-improvements-mobile-ux-v2120-giorgio-ozzola-a2lof",
+    "thumbnail": "workout-improvements-and-mobile-ux.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "From v1.4 to v2.9: 303 Commits in 30 Days",
+    "date": "2025-11-30",
+    "description": "What 303 commits taught me about rapid iteration and building in public",
+    "url": "https://www.linkedin.com/pulse/from-v14-v29-303-commits-30-days-giorgio-ozzola-xji2f",
+    "thumbnail": "from-v1-to-v2-9-303-commits.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Completing the Platform Loop: 35 Days of Building Synergym",
+    "date": "2025-11-17",
+    "description": "Workout logging, progress visualization, and user preferences complete the athlete experience",
+    "url": "https://www.linkedin.com/pulse/completing-platform-loop-35-days-building-synergym-giorgio-ozzola-rwcif",
+    "thumbnail": "synergym-core-athlete.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Designing a Two-Sided Platform in Rails",
+    "date": "2025-11-09",
+    "description": "Trainers, Athletes, and the Power of Context",
+    "url": "https://www.linkedin.com/pulse/designing-two-sided-platform-rails-trainers-athletes-power-ozzola-bstwf",
+    "thumbnail": "designing-rails-platform.jpg",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Building Coach-Ready Features",
+    "date": "2025-11-02",
+    "description": "From Invitations to Program Builder",
+    "url": "https://www.linkedin.com/pulse/synergym-now-coach-ready-invitation-flow-program-builder-ozzola-3syhf/",
+    "thumbnail": "building-coach-ready-features.png",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "Going Live with Google Auth",
+    "date": "2025-10-26",
+    "description": "Making Synergym Safer, One Login at a Time",
+    "url": "https://www.linkedin.com/pulse/going-live-google-auth-making-synergym-safer-one-login-giorgio-ozzola-ukbpf",
+    "thumbnail": "going-live-google-auth.jpg",
+    "tags": [
+      "Tech"
+    ]
+  },
+  {
+    "title": "The One-Man Framework",
+    "date": "2025-10-19",
+    "description": "Why Rails Beats JavaScript for My SaaS Velocity",
+    "url": "https://www.linkedin.com/pulse/one-man-framework-why-rails-beats-javascript-my-saas-velocity-ozzola-xrgrf",
+    "thumbnail": "one-man-framework.png",
+    "tags": [
+      "Tech"
+    ]
+  }
+]
