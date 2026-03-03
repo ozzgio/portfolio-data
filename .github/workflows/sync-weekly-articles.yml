@@ -25,10 +25,12 @@ jobs:
 
       - name: Sync changed published articles to Synergym
         run: |
-          require "psych"
+          ruby - <<'RUBY'
+          require "psych"  
           require "net/http"
           require "uri"
           require "json"
+          require "date"
 
           webhook_url = ENV.fetch("SYNERGYM_WEBHOOK_URL")
           webhook_token = ENV.fetch("SYNERGYM_WEBHOOK_TOKEN")
@@ -44,19 +46,18 @@ jobs:
             end
           end
 
+          def thumbnail_url_for(frontmatter)
+            thumb = frontmatter["thumbnail"].to_s
+            return nil if thumb.empty?
+            "https://raw.githubusercontent.com/ozzgio/portfolio-data/main/images/#{thumb}"
+          end
+
           changed_files = `git diff --name-only HEAD~1 HEAD`.split("\n")
           article_files = changed_files.select { |p| p.match?(/^blog\/articles\/.+\/published\/.+\.md$/) }
 
           if article_files.empty?
             puts "No published article markdown files changed; nothing to sync."
             exit 0
-          end
-
-          def thumbnail_url_for(frontmatter)
-            thumb = frontmatter["thumbnail"].to_s
-            return nil if thumb.empty?
-
-            "https://raw.githubusercontent.com/ozzgio/portfolio-data/main/images/#{thumb}"
           end
 
           article_files.each do |path|
@@ -68,7 +69,8 @@ jobs:
             date  = fm["date"].to_s
             status = (fm["status"] || "published").to_s
             tags  = Array(fm["tags"]).map(&:to_s)
-            version = fm["version"].to_s.presence
+            version = fm["version"].to_s
+            version = nil if version.empty?
 
             published_at =
               begin
@@ -103,3 +105,4 @@ jobs:
             puts "  -> #{res.code} #{res.message}"
             puts "  Response body: #{res.body}" unless res.is_a?(Net::HTTPSuccess)
           end
+          RUBY
