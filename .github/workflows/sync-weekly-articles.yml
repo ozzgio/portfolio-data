@@ -97,6 +97,9 @@ jobs:
                                   ""
                                 end
 
+            version = article["version"].to_s
+            version = nil if version.empty?
+
             payload = {
               slug: slug,
               title: title,
@@ -106,7 +109,7 @@ jobs:
               published_at: published_at,
               thumbnail_url: build_thumbnail_url(article),
               tags: tags,
-              version: article["version"].to_s.presence
+              version: version
             }
 
             req = Net::HTTP::Post.new(uri.request_uri)
