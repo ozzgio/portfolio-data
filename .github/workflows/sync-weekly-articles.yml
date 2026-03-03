@@ -4,7 +4,8 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'blog/articles/**/published/*.md'
+      - 'data/articles.json'
+      - 'images/**'
   workflow_dispatch: {}
 
 jobs:
@@ -22,84 +23,101 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-      - name: Sync published articles to Synergym
+
+      - name: Sync all published articles to Synergym
         run: |
           ruby - <<'RUBY'
-          require "psych"
+          require "json"
           require "net/http"
           require "uri"
-          require "json"
           require "date"
-      
+
           webhook_url = ENV.fetch("SYNERGYM_WEBHOOK_URL")
           webhook_token = ENV.fetch("SYNERGYM_WEBHOOK_TOKEN")
-      
-          def parse_markdown(path)
-            raw = File.read(path)
-            if raw.start_with?("---\n")
-              _, front, body = raw.split(/^---\n/, 3)
-              fm = Psych.safe_load(front, aliases: true) || {}
-              [fm, body.to_s]
-            else
-              [{}, raw]
-            end
+
+          path = File.join("data", "articles.json")
+          unless File.exist?(path)
+            puts "No data/articles.json found; nothing to sync."
+            exit 0
           end
-      
-          def thumbnail_url_for(frontmatter)
-            thumb = frontmatter["thumbnail"].to_s
+
+          articles = JSON.parse(File.read(path))
+          if articles.empty?
+            puts "data/articles.json is empty; nothing to sync."
+            exit 0
+          end
+
+          def build_slug(article)
+            url = article["url"].to_s
+            if !url.empty?
+              begin
+                uri = URI.parse(url)
+                seg = uri.path.split("/").reject(&:empty?).last
+                return seg.downcase.gsub(/[^a-z0-9\-]+/, "-").gsub(/^-|-$/, "") if seg && !seg.empty?
+              rescue URI::InvalidURIError
+              end
+            end
+
+            title = article["title"].to_s
+            return "post-#{Time.now.to_i}" if title.empty?
+            title.downcase.gsub(/[^a-z0-9\-]+/, "-").gsub(/^-|-$/, "")
+          end
+
+          def build_thumbnail_url(article)
+            thumb = article["thumbnail"].to_s
             return nil if thumb.empty?
             "https://raw.githubusercontent.com/ozzgio/portfolio-data/main/images/#{thumb}"
           end
-      
-          article_files = Dir.glob("blog/articles/**/published/*.md")
-          if article_files.empty?
-            puts "No published article markdown files found; nothing to sync."
-            exit 0
-          end
-      
-          article_files.each do |path|
-            fm, body = parse_markdown(path)
-            slug = File.basename(path, ".md")
-      
-            title = fm["title"].to_s
-            desc  = fm["description"].to_s
-            date  = fm["date"].to_s
-            status = (fm["status"] || "published").to_s
-            tags  = Array(fm["tags"]).map(&:to_s)
-            version = fm["version"].to_s
-            version = nil if version.empty?
-      
+
+          uri = URI.parse(webhook_url)
+          http = Net::HTTP.new(uri.host, uri.port)
+          http.use_ssl = uri.scheme == "https"
+
+          articles.each do |article|
+            slug  = build_slug(article)
+            title = article["title"].to_s
+            desc  = article["description"].to_s
+            date  = article["date"].to_s
+            url   = article["url"].to_s
+            tags  = Array(article["tags"]).map(&:to_s)
+
             published_at =
               begin
                 Date.parse(date).to_time.iso8601
               rescue
                 nil
               end
-      
+
+            content_markdown = if !desc.empty? || !url.empty?
+                                  body = desc.dup
+                                  body << "\n\n" unless body.empty?
+                                  body << "[Read full article](#{url})" unless url.empty?
+                                  body
+                                else
+                                  ""
+                                end
+
             payload = {
               slug: slug,
               title: title,
               description: desc,
-              content_markdown: body,
-              status: status,
+              content_markdown: content_markdown,
+              status: "published",
               published_at: published_at,
-              thumbnail_url: thumbnail_url_for(fm),
+              thumbnail_url: build_thumbnail_url(article),
               tags: tags,
-              version: version
+              version: article["version"].to_s.presence
             }
-      
-            uri = URI.parse(webhook_url)
-            http = Net::HTTP.new(uri.host, uri.port)
-            http.use_ssl = uri.scheme == "https"
-      
+
             req = Net::HTTP::Post.new(uri.request_uri)
             req["Content-Type"] = "application/json"
             req["X-Webhook-Token"] = webhook_token
             req.body = JSON.dump(payload)
-      
-            puts "Syncing #{slug} from #{path}..."
+
+            puts "Syncing #{slug}..."
             res = http.request(req)
             puts "  -> #{res.code} #{res.message}"
             puts "  Response body: #{res.body}" unless res.is_a?(Net::HTTPSuccess)
           end
           RUBY
+
