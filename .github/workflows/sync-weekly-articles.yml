@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SYNERGYM_WEBHOOK_URL: ${{ secrets.SYNERGYM_WEEKLY_WEBHOOK_URL }}
-      SYNERGYM_WEBHOOK_TOKEN: ${{ secrets.SYNERGYM_WEEKLY_WEBHOOK_TOKEN }}
+      SYNERGYM_WEBHOOK_TOKEN: ${{ secrets.WEBHOOK_WEEKLY_ARTICLE_TOKEN }}
 
     steps:
       - name: Checkout
@@ -97,6 +97,9 @@ jobs:
                                   ""
                                 end
 
+            version = article["version"].to_s
+            version = nil if version.empty?
+
             payload = {
               slug: slug,
               title: title,
@@ -106,7 +109,7 @@ jobs:
               published_at: published_at,
               thumbnail_url: build_thumbnail_url(article),
               tags: tags,
-              version: article["version"].to_s.presence
+              version: version
             }
 
             req = Net::HTTP::Post.new(uri.request_uri)
