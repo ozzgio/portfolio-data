@@ -1,0 +1,105 @@
+name: Sync weekly articles to Synergym
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'blog/articles/**/published/*.md'
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      SYNERGYM_WEBHOOK_URL: ${{ secrets.SYNERGYM_WEEKLY_WEBHOOK_URL }}
+      SYNERGYM_WEBHOOK_TOKEN: ${{ secrets.SYNERGYM_WEEKLY_WEBHOOK_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Sync changed published articles to Synergym
+        run: |
+          require "psych"
+          require "net/http"
+          require "uri"
+          require "json"
+
+          webhook_url = ENV.fetch("SYNERGYM_WEBHOOK_URL")
+          webhook_token = ENV.fetch("SYNERGYM_WEBHOOK_TOKEN")
+
+          def parse_markdown(path)
+            raw = File.read(path)
+            if raw.start_with?("---\n")
+              _, front, body = raw.split(/^---\n/, 3)
+              fm = Psych.safe_load(front, aliases: true) || {}
+              [fm, body.to_s]
+            else
+              [{}, raw]
+            end
+          end
+
+          changed_files = `git diff --name-only HEAD~1 HEAD`.split("\n")
+          article_files = changed_files.select { |p| p.match?(/^blog\/articles\/.+\/published\/.+\.md$/) }
+
+          if article_files.empty?
+            puts "No published article markdown files changed; nothing to sync."
+            exit 0
+          end
+
+          def thumbnail_url_for(frontmatter)
+            thumb = frontmatter["thumbnail"].to_s
+            return nil if thumb.empty?
+
+            "https://raw.githubusercontent.com/ozzgio/portfolio-data/main/images/#{thumb}"
+          end
+
+          article_files.each do |path|
+            fm, body = parse_markdown(path)
+            slug = File.basename(path, ".md")
+
+            title = fm["title"].to_s
+            desc  = fm["description"].to_s
+            date  = fm["date"].to_s
+            status = (fm["status"] || "published").to_s
+            tags  = Array(fm["tags"]).map(&:to_s)
+            version = fm["version"].to_s.presence
+
+            published_at =
+              begin
+                Date.parse(date).to_time.iso8601
+              rescue
+                nil
+              end
+
+            payload = {
+              slug: slug,
+              title: title,
+              description: desc,
+              content_markdown: body,
+              status: status,
+              published_at: published_at,
+              thumbnail_url: thumbnail_url_for(fm),
+              tags: tags,
+              version: version
+            }
+
+            uri = URI.parse(webhook_url)
+            http = Net::HTTP.new(uri.host, uri.port)
+            http.use_ssl = uri.scheme == "https"
+
+            req = Net::HTTP::Post.new(uri.request_uri)
+            req["Content-Type"] = "application/json"
+            req["X-Webhook-Token"] = webhook_token
+            req.body = JSON.dump(payload)
+
+            puts "Syncing #{slug} from #{path}..."
+            res = http.request(req)
+            puts "  -> #{res.code} #{res.message}"
+            puts "  Response body: #{res.body}" unless res.is_a?(Net::HTTPSuccess)
+          end
