@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SYNERGYM_WEBHOOK_URL: ${{ secrets.SYNERGYM_WEEKLY_WEBHOOK_URL }}
-      SYNERGYM_WEBHOOK_TOKEN: ${{ secrets.SYNERGYM_WEEKLY_WEBHOOK_TOKEN }}
+      SYNERGYM_WEBHOOK_TOKEN: ${{ secrets.WEBHOOK_WEEKLY_ARTICLE_TOKEN }}
 
     steps:
       - name: Checkout
