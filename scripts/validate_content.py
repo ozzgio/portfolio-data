@@ -29,11 +29,12 @@ class ValidationResult:
         self.warnings.append(message)
 
 
-def load_json(path: Path, result: ValidationResult) -> Any | None:
+def load_json(path: Path, result: ValidationResult, *, required: bool = True) -> Any | None:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
-        result.error(f"Missing required file: {path}")
+        if required:
+            result.error(f"Missing required file: {path}")
     except json.JSONDecodeError as exc:
         result.error(f"Invalid JSON in {path}: {exc}")
     return None
@@ -197,8 +198,8 @@ def main() -> int:
 
     root_articles = load_json(repo_root / "articles.json", result)
     root_books = load_json(repo_root / "books.json", result)
-    mirrored_articles = load_json(repo_root / "data" / "articles.json", result)
-    mirrored_books = load_json(repo_root / "data" / "books.json", result)
+    mirrored_articles = load_json(repo_root / "data" / "articles.json", result, required=False)
+    mirrored_books = load_json(repo_root / "data" / "books.json", result, required=False)
 
     if images_dir.exists() and not images_dir.is_dir():
         result.error("`images/` exists but is not a directory")
@@ -209,8 +210,13 @@ def main() -> int:
         validate_books(root_books, images_dir, result)
     if root_articles is not None and mirrored_articles is not None:
         compare_mirrors(root_articles, mirrored_articles, "articles.json", result)
+    elif (repo_root / "data" / "articles.json").exists():
+        result.warn("articles.json data mirror exists but could not be validated")
+
     if root_books is not None and mirrored_books is not None:
         compare_mirrors(root_books, mirrored_books, "books.json", result)
+    elif (repo_root / "data" / "books.json").exists():
+        result.warn("books.json data mirror exists but could not be validated")
 
     print("portfolio-data validation summary")
     if root_articles is not None:

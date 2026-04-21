@@ -15,7 +15,7 @@ This repo is no longer the authoring location for Markdown content. It is the pu
 ## What lives here
 
 - `articles.json` and `books.json`: public metadata payloads
-- `data/articles.json` and `data/books.json`: mirrored copies used by the site/runtime
+- `data/articles.json` and `data/books.json`: optional mirrored copies when a downstream runtime still expects them
 - `images/`: article thumbnails and other published image assets
 - `scripts/validate_content.py`: fails fast when published artifacts are malformed
 
@@ -31,8 +31,7 @@ This repo is no longer the authoring location for Markdown content. It is the pu
 GitHub Actions validates changes on push and pull request. The validator checks:
 
 - required fields and JSON structure
-- `articles.json` and `data/articles.json` stay in sync
-- `books.json` and `data/books.json` stay in sync
+- optional mirrors in `data/` stay in sync when they are present
 - article thumbnails exist in `images/`
 - URLs are absolute `http`/`https`
 - dates use `YYYY-MM-DD`
@@ -48,7 +47,7 @@ python3 scripts/validate_content.py
 
 When updating this repo from Obsidian or another export step:
 
-1. Update both root JSON files and their `data/` mirrors together.
+1. Update the root JSON files first. If you keep `data/` mirrors in the repo, update those in the same change.
 2. Add any new local article thumbnails under `images/`.
 3. Run `python3 scripts/validate_content.py` before pushing.
 4. Treat this repo as public. Do not publish private notes or internal-only metadata here.
