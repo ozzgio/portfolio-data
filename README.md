@@ -1,67 +1,70 @@
 # Portfolio Data
 
-Public repository containing the content and data for my portfolio/blog.
+Public repository containing the published data artifacts for the portfolio site.
 
-## 🚀 Workflow
+For agent-facing repo rules, see [AGENTS.md](./AGENTS.md).
 
-This repository hosts the source Markdown files for Articles and Books. A GitHub Action automatically generates the JSON files used by the website whenever changes are pushed.
+## Workflow
 
-### Adding a New Book
+Current source of truth:
 
-1. Create a new Markdown file in `blog/books/` (e.g., `blog/books/my-new-book.md`).
-2. Use the following frontmatter format:
+`Obsidian vault -> exported JSON/images -> portfolio-data -> portfolio`
 
-```markdown
----
-title: "Book Title"
-author: "Author Name"
-cover: "https://example.com/cover.jpg"
-rating: 4.5
-tags:
-  - Philosophy
-  - Finance
-status: "read"
----
+This repo is no longer the authoring location for Markdown content. It is the public publishing layer consumed by the website.
 
-Your lesson or notes here...
+## What lives here
+
+- `articles.json` and `books.json`: public metadata payloads
+- `data/articles.json` and `data/books.json`: mirrored copies used by the site/runtime
+- `images/`: article thumbnails and other published image assets
+- `scripts/validate_content.py`: fails fast when published artifacts are malformed
+
+## What does not live here
+
+- private vault notes
+- draft-only content not meant for publication
+- the canonical Obsidian authoring workflow
+- frontend rendering code from `portfolio`
+
+## Validation
+
+GitHub Actions validates changes on push and pull request. The validator checks:
+
+- required fields and JSON structure
+- `articles.json` and `data/articles.json` stay in sync
+- `books.json` and `data/books.json` stay in sync
+- article thumbnails exist in `images/`
+- URLs are absolute `http`/`https`
+- dates use `YYYY-MM-DD`
+- ratings stay in the `0..5` range
+
+Run it locally:
+
+```bash
+python3 scripts/validate_content.py
 ```
 
-3. Commit and push the changes.
-4. The `books.json` file will be automatically updated.
+## Publishing rules
 
-### Adding a New Article
+When updating this repo from Obsidian or another export step:
 
-1. Create a new Markdown file in `blog/articles/YYYY/published/` (e.g., `blog/articles/2025/published/my-article.md`).
-2. Place any images in `blog/articles/images/`.
-3. Use the following frontmatter format:
+1. Update both root JSON files and their `data/` mirrors together.
+2. Add any new local article thumbnails under `images/`.
+3. Run `python3 scripts/validate_content.py` before pushing.
+4. Treat this repo as public. Do not publish private notes or internal-only metadata here.
 
-```markdown
----
-title: "Article Title"
-date: "2025-01-01"
-description: "Brief description"
-url: "https://external-link.com"
-thumbnail: "image.png"
-tags:
-  - Tech
-status: "published"
----
+## Repository structure
 
-Content...
-```
-
-4. Commit and push.
-
-## 📁 Repository Structure
-
-```
+```text
 portfolio-data/
-├── blog/                # Source Markdown files
-│   ├── articles/        # Articles organized by year
-│   └── books/           # Book notes
-├── articles.json        # Generated metadata for articles
-├── books.json           # Generated metadata for books
-├── images/              # Images used in articles/books
-├── scripts/             # Generation scripts
-└── .github/workflows/   # Automation configuration
+├── articles.json
+├── books.json
+├── data/
+│   ├── articles.json
+│   └── books.json
+├── images/
+├── scripts/
+│   ├── generate_json.py
+│   └── validate_content.py
+└── .github/workflows/
 ```
