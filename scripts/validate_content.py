@@ -113,9 +113,13 @@ def validate_articles(data: Any, images_dir: Path, result: ValidationResult) -> 
         title = validate_string(item.get("title"), "title", item_label, result)
         date = validate_string(item.get("date"), "date", item_label, result)
         description = validate_string(item.get("description"), "description", item_label, result)
-        url = validate_string(item.get("url"), "url", item_label, result)
+        is_internal = item.get("source") == "internal"
+        url = validate_string(item.get("url"), "url", item_label, result, required=not is_internal)
         thumbnail = validate_string(item.get("thumbnail"), "thumbnail", item_label, result)
         tags = validate_tags(item.get("tags"), item_label, result)
+
+        if is_internal and not item.get("slug"):
+            result.error(f"{item_label}: internal articles must have a `slug`")
 
         if title:
             titles.append(title.casefold())
