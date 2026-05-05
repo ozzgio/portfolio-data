@@ -166,6 +166,12 @@ def validate_books(data: Any, images_dir: Path, result: ValidationResult) -> Non
             if url and not is_http_url(url):
                 result.error(f"{item_label}: `url` must be an absolute http/https URL when present")
 
+        is_internal = item.get("source") == "internal"
+        if is_internal and not item.get("slug"):
+            result.error(f"{item_label}: internal books must have a `slug`")
+        if is_internal and not item.get("notes"):
+            result.warn(f"{item_label}: internal book has no `notes` content")
+
         rating = item.get("rating")
         if not isinstance(rating, (int, float)):
             result.error(f"{item_label}: `rating` must be numeric")
