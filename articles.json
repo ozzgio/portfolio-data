@@ -8,7 +8,9 @@
     "tags": [
       "Tech",
       "BuildInPublic"
-    ]
+    ],
+    "slug": "2026-02-27-standardizing-ui-translation-tooling-in-synergym-v2-28-10",
+    "source": "external"
   },
   {
     "title": "UI Polish and Search Components: This Week on Synergym (v2.27.0 - v2.28.7)",
@@ -18,7 +20,9 @@
     "thumbnail": "weekly-update-v2-28-7.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2026-02-08-ui-polish-and-search-components-this-week-on-synergym-v2-27-0-v2-28-7",
+    "source": "external"
   },
   {
     "title": "Blog Translations and Admin UI: This Week on Synergym",
@@ -28,7 +32,9 @@
     "thumbnail": "weekly-update-platform-polish-and-stability.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2026-02-02-blog-translations-and-admin-ui-this-week-on-synergym",
+    "source": "external"
   },
   {
     "title": "Going Global: Multi-Language Support v2.20.5 - v2.26.0",
@@ -38,7 +44,9 @@
     "thumbnail": "going-global-multi-language-support-v2205-v2260.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2026-01-26-going-global-multi-language-support-v2-20-5-v2-26-0",
+    "source": "external"
   },
   {
     "title": "Dependency Updates and Maintenance: v2.20.5 - v2.20.10",
@@ -48,7 +56,9 @@
     "thumbnail": "dependency-updates-and-maintenance-v2205-v2210.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-12-28-dependency-updates-and-maintenance-v2-20-5-v2-20-10",
+    "source": "external"
   },
   {
     "title": "Admin Tools, UI Polish, and Workout Reliability: v2.19.0 - v2.20.4",
@@ -58,7 +68,9 @@
     "thumbnail": "admin-tools-ui-polish-workout-reliability-v2190-v2204.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-12-21-admin-tools-ui-polish-and-workout-reliability-v2-19-0-v2-20-4",
+    "source": "external"
   },
   {
     "title": "SEO, Blog Platform, and Platform Polish: v2.14.0 - v2.18.2",
@@ -68,7 +80,9 @@
     "thumbnail": "seo-blog-platform-polish-v2140-v2182.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-12-14-seo-blog-platform-and-platform-polish-v2-14-0-v2-18-2",
+    "source": "external"
   },
   {
     "title": "Workout Improvements and Mobile UX: v2.12.0",
@@ -78,7 +92,9 @@
     "thumbnail": "workout-improvements-and-mobile-ux.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-12-08-workout-improvements-and-mobile-ux-v2-12-0",
+    "source": "external"
   },
   {
     "title": "From v1.4 to v2.9: 303 Commits in 30 Days",
@@ -88,7 +104,9 @@
     "thumbnail": "from-v1-to-v2-9-303-commits.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-11-30-from-v1-4-to-v2-9-303-commits-in-30-days",
+    "source": "external"
   },
   {
     "title": "Completing the Platform Loop: 35 Days of Building Synergym",
@@ -98,7 +116,9 @@
     "thumbnail": "synergym-core-athlete.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-11-17-completing-the-platform-loop-35-days-of-building-synergym",
+    "source": "external"
   },
   {
     "title": "Designing a Two-Sided Platform in Rails",
@@ -108,7 +128,9 @@
     "thumbnail": "designing-rails-platform.jpg",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-11-09-designing-a-two-sided-platform-in-rails",
+    "source": "external"
   },
   {
     "title": "Building Coach-Ready Features",
@@ -118,7 +140,9 @@
     "thumbnail": "building-coach-ready-features.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-11-02-building-coach-ready-features",
+    "source": "external"
   },
   {
     "title": "Going Live with Google Auth",
@@ -128,7 +152,9 @@
     "thumbnail": "going-live-google-auth.jpg",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-10-26-going-live-with-google-auth",
+    "source": "external"
   },
   {
     "title": "The One-Man Framework",
@@ -138,6 +164,21 @@
     "thumbnail": "one-man-framework.png",
     "tags": [
       "Tech"
-    ]
+    ],
+    "slug": "2025-10-19-the-one-man-framework",
+    "source": "external"
+  },
+  {
+    "title": "The One-Man Framework (Native Edition)",
+    "date": "2026-05-05",
+    "description": "First internally hosted article on ozzo.blog. Why a solo-friendly framework can beat trendy complexity.",
+    "thumbnail": "one-man-framework.png",
+    "tags": [
+      "Tech",
+      "BuildInPublic"
+    ],
+    "slug": "2026-05-05-the-one-man-framework-native",
+    "source": "internal",
+    "content": "# The One-Man Framework\n\nI build fast when the stack stays boring.\n\n## Why this matters\n\nShipping weekly means every layer must be predictable:\n\n- one deploy path\n- one clear data model\n- one place to debug\n\nRails keeps those constraints by default.\n\n## What I optimize for\n\n1. **Short feedback loops**\n2. **Low operational overhead**\n3. **Readable conventions over custom architecture**\n\n## Tradeoffs\n\nJavaScript-heavy stacks are great when you have specialized teams.\nFor a solo founder, the integration tax is often the bottleneck.\n\n## Current rule\n\nUse the simplest stack that ships in days, not weeks."
   }
 ]
