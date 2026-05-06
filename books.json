@@ -5,6 +5,8 @@
     "cover": "https://images.unsplash.com/photo-1727407467512-5093b3ac99b4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFyY3VzJTIwYXVyZWxpdXN8ZW58MHx8MHx8fDA%3D",
     "rating": 5.0,
     "url": "",
+    "slug": "meditations-marcus-aurelius",
+    "source": "external",
     "tags": [
       "Philosophy"
     ],
@@ -16,6 +18,8 @@
     "cover": "https://images.unsplash.com/photo-1671774637665-c056d30f389f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "rating": 4.5,
     "url": "",
+    "slug": "think-and-grow-rich-napoleon-hill",
+    "source": "external",
     "tags": [
       "Finance",
       "Philosophy"
@@ -28,33 +32,52 @@
     "cover": "https://images.unsplash.com/photo-1655310722170-97dd42bdc734",
     "rating": 4.5,
     "url": "",
+    "slug": "the-almanack-of-naval-ravikant-eric-jorgenson",
+    "source": "external",
     "tags": [
       "Philosophy",
       "Life"
     ],
-    "lesson": "The greatest superpower is the ability to change yourself. \nImpatience with actions patience with results."
+    "lesson": "The greatest superpower is the ability to change yourself. Impatience with actions, patience with results."
   },
   {
-    "title": "The art of war",
+    "title": "The Art of War",
     "author": "Sun Tzu",
     "cover": "https://images.pexels.com/photos/17642882/pexels-photo-17642882/free-photo-of-sculpture-of-terracotta-army.jpeg",
     "rating": 4.0,
     "url": "",
+    "slug": "the-art-of-war-sun-tzu",
+    "source": "external",
     "tags": [
       "Philosophy"
     ],
     "lesson": "If you know your enemy and yourself, you will not fear 100 battles."
   },
   {
-    "title": "Rich dad poor dad",
+    "title": "Rich Dad Poor Dad",
     "author": "Robert Kiyosaki",
     "cover": "https://images.pexels.com/photos/16764649/pexels-photo-16764649.jpeg",
     "rating": 4.0,
     "url": "",
+    "slug": "rich-dad-poor-dad-robert-kiyosaki",
+    "source": "external",
     "tags": [
       "Finance"
     ],
-    "lesson": "If you can’t manage yourself you can’t control money"
+    "lesson": "If you can't manage yourself you can't control money"
+  },
+  {
+    "title": "4 Hours Work Week",
+    "author": "Tim Ferriss",
+    "cover": "https://i.pinimg.com/736x/a0/89/1d/a0891d2b386892af4d0fed11f5d9278c.jpg",
+    "rating": 4.0,
+    "url": "",
+    "slug": "4-hours-work-week-tim-ferriss",
+    "source": "external",
+    "tags": [
+      "Work"
+    ],
+    "lesson": "Optimization is the key. Everything you do you should do with purpose."
   },
   {
     "title": "Purpose & Profit",
@@ -62,22 +85,13 @@
     "cover": "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1742666917i/230199052.jpg",
     "rating": 4.0,
     "url": "",
+    "slug": "purpose-profit-dan-koe",
+    "source": "external",
     "tags": [
       "Life",
       "Work"
     ],
-    "lesson": "You don’t discover purpose: you create it through action.\nClarity comes after doing, not before."
-  },
-  {
-    "title": "4 Hours work week",
-    "author": "Tim Ferris",
-    "cover": "https://i.pinimg.com/736x/a0/89/1d/a0891d2b386892af4d0fed11f5d9278c.jpg",
-    "rating": 4.0,
-    "url": "",
-    "tags": [
-      "Work"
-    ],
-    "lesson": "Optimization is the key.\nEverything you do you should do with purpose."
+    "lesson": "You don't discover purpose: you create it through action. Clarity comes after doing, not before."
   },
   {
     "title": "The Richest Man in Babylon",
@@ -85,7 +99,10 @@
     "cover": "https://images.unsplash.com/photo-1720774401477-032ba6a13072?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "rating": 3.5,
     "url": "",
+    "slug": "the-richest-man-in-babylon-george-clason",
+    "source": "external",
     "tags": [
+      "Finance",
       "Philosophy"
     ],
     "lesson": "Wealth grows wherever men exert energy."
@@ -96,6 +113,8 @@
     "cover": "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "rating": 3.0,
     "url": "",
+    "slug": "the-psychology-of-money-morgan-housel",
+    "source": "external",
     "tags": [
       "Finance"
     ],
@@ -107,9 +126,26 @@
     "cover": "https://images.pexels.com/photos/6583688/pexels-photo-6583688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "rating": 3.0,
     "url": "",
+    "slug": "the-alchemist-paulo-coelho",
+    "source": "external",
     "tags": [
       "Philosophy"
     ],
     "lesson": "Maktub. Arabic for \"It is written.\""
+  },
+  {
+    "title": "Deep Work",
+    "author": "Cal Newport",
+    "cover": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=500&auto=format&fit=crop&q=60",
+    "rating": 0,
+    "url": "",
+    "slug": "deep-work-cal-newport",
+    "source": "external",
+    "tags": [
+      "Work",
+      "Philosophy"
+    ],
+    "lesson": "Currently reading.",
+    "status": "reading"
   }
 ]

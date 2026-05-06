@@ -113,10 +113,13 @@ def validate_articles(data: Any, images_dir: Path, result: ValidationResult) -> 
         title = validate_string(item.get("title"), "title", item_label, result)
         date = validate_string(item.get("date"), "date", item_label, result)
         description = validate_string(item.get("description"), "description", item_label, result)
-        url = validate_string(item.get("url"), "url", item_label, result)
+        is_internal = item.get("source") == "internal"
+        url = validate_string(item.get("url"), "url", item_label, result, required=not is_internal)
         thumbnail = validate_string(item.get("thumbnail"), "thumbnail", item_label, result)
         tags = validate_tags(item.get("tags"), item_label, result)
 
+        if is_internal and not item.get("slug"):
+            result.error(f"{item_label}: internal articles must have a `slug`")
         if title:
             titles.append(title.casefold())
         if url:
@@ -162,6 +165,11 @@ def validate_books(data: Any, images_dir: Path, result: ValidationResult) -> Non
             if url and not is_http_url(url):
                 result.error(f"{item_label}: `url` must be an absolute http/https URL when present")
 
+        is_internal = item.get("source") == "internal"
+        if is_internal and not item.get("slug"):
+            result.error(f"{item_label}: internal books must have a `slug`")
+        if is_internal and not item.get("notes"):
+            result.warn(f"{item_label}: internal book has no `notes` content")
         rating = item.get("rating")
         if not isinstance(rating, (int, float)):
             result.error(f"{item_label}: `rating` must be numeric")
