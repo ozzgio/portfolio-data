@@ -120,7 +120,6 @@ def validate_articles(data: Any, images_dir: Path, result: ValidationResult) -> 
 
         if is_internal and not item.get("slug"):
             result.error(f"{item_label}: internal articles must have a `slug`")
-
         if title:
             titles.append(title.casefold())
         if url:
@@ -171,7 +170,6 @@ def validate_books(data: Any, images_dir: Path, result: ValidationResult) -> Non
             result.error(f"{item_label}: internal books must have a `slug`")
         if is_internal and not item.get("notes"):
             result.warn(f"{item_label}: internal book has no `notes` content")
-
         rating = item.get("rating")
         if not isinstance(rating, (int, float)):
             result.error(f"{item_label}: `rating` must be numeric")
