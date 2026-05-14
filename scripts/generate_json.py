@@ -106,6 +106,18 @@ def extract_frontmatter(content):
         return frontmatter, body
     return {}, content
 
+def extract_section(body, section_name):
+    """Extract content of a markdown section by heading name."""
+    pattern = rf'##\s+{re.escape(section_name)}\s*\n(.*?)(?=\n##\s|\Z)'
+    match = re.search(pattern, body, re.DOTALL)
+    if not match:
+        return ''
+    content = match.group(1).strip()
+    # Skip HTML placeholder comments
+    if content.startswith('<!--'):
+        return ''
+    return content
+
 def get_articles(vault_root=None):
     """Collect all published articles from blog/articles/YYYY/published/ folders."""
     articles = []
@@ -203,15 +215,26 @@ def get_books(vault_root=None):
                     rating = float(rating) if rating else 0
                 except (ValueError, TypeError):
                     rating = 0
-                
+
+                # Extract lesson from ## Key Lesson section; fall back to frontmatter field
+                lesson = extract_section(body, 'Key Lesson') or frontmatter.get('lesson', '')
+
+                # Extract notes from ## Notes section (skip placeholder comments)
+                # Only include if source is not "external"
+                notes = ''
+                if frontmatter.get('source', 'internal') != 'external':
+                    notes = extract_section(body, 'Notes')
+
                 book = {
                     'title': frontmatter.get('title', ''),
                     'author': frontmatter.get('author', ''),
                     'cover': frontmatter.get('cover', ''),
                     'rating': rating,
+                    'slug': frontmatter.get('slug', ''),
                     'url': frontmatter.get('url', ''),
                     'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else [],
-                    'lesson': (frontmatter.get('lesson', '') or body).strip()
+                    'lesson': lesson,
+                    'notes': notes,
                 }
                 books.append(book)
         except Exception as e:
@@ -415,11 +438,11 @@ Examples:
         print(f"\n[DRY RUN] Would generate {books_path} with {len(books)} books")
     
     for book in books:
-        print(f"  - {book.get('title', 'Untitled')} by {book.get('author', 'Unknown')} ({book.get('rating', 0)}/5)")
+        notes_status = "with notes" if book.get('notes') else "no notes"
+        print(f"  - {book.get('title', 'Untitled')} by {book.get('author', 'Unknown')} ({book.get('rating', 0)}/5) [{notes_status}]")
     
     if args.dry_run:
         print("\n[DRY RUN] No files were modified. Run without --dry-run to apply changes.")
 
 if __name__ == '__main__':
     main()
-
