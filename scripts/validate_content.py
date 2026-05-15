@@ -152,10 +152,12 @@ def validate_books(data: Any, images_dir: Path, result: ValidationResult) -> Non
             result.error(f"{item_label}: entry must be an object")
             continue
 
+        is_reading = item.get("status") == "reading"
+
         title = validate_string(item.get("title"), "title", item_label, result)
         author = validate_string(item.get("author"), "author", item_label, result)
         cover = validate_string(item.get("cover"), "cover", item_label, result)
-        lesson = validate_string(item.get("lesson"), "lesson", item_label, result)
+        lesson = validate_string(item.get("lesson"), "lesson", item_label, result, required=not is_reading)
         tags = validate_tags(item.get("tags"), item_label, result)
 
         if title:
@@ -168,7 +170,7 @@ def validate_books(data: Any, images_dir: Path, result: ValidationResult) -> Non
         is_internal = item.get("source") == "internal"
         if is_internal and not item.get("slug"):
             result.error(f"{item_label}: internal books must have a `slug`")
-        if is_internal and not item.get("notes"):
+        if is_internal and not item.get("notes") and not is_reading:
             result.warn(f"{item_label}: internal book has no `notes` content")
         rating = item.get("rating")
         if not isinstance(rating, (int, float)):
@@ -182,7 +184,7 @@ def validate_books(data: Any, images_dir: Path, result: ValidationResult) -> Non
             result.warn(f"{item_label}: short `author` value")
         if lesson and len(lesson) < 15:
             result.warn(f"{item_label}: short `lesson` ({len(lesson)} chars)")
-        if not tags:
+        if not tags and not is_reading:
             result.warn(f"{item_label}: no tags provided")
 
     report_duplicates(titles, "book titles", result)
