@@ -159,12 +159,28 @@ def get_articles(vault_root=None):
                 
                 # Only include if status is published (or if url exists)
                 if frontmatter.get('status') == 'published' or frontmatter.get('url'):
+                    slug = frontmatter.get('slug', '')
+                    raw_thumbnail = frontmatter.get('thumbnail', '')
+
+                    # Support dynamic thumbnail templates in frontmatter.
+                    # Examples:
+                    #   thumbnail: "https://picsum.photos/seed/{slug}/1200/630"
+                    #   thumbnail: "https://.../{{slug}}/..."
+                    # If thumbnail is missing, auto-generate from slug.
+                    thumbnail = raw_thumbnail
+                    if isinstance(raw_thumbnail, str) and raw_thumbnail:
+                        thumbnail = raw_thumbnail.replace('{slug}', slug).replace('{{slug}}', slug)
+                    elif slug:
+                        thumbnail = f"https://picsum.photos/seed/{slug}/1200/630"
+                    else:
+                        thumbnail = ''
+
                     article = {
                         'title': frontmatter.get('title', ''),
                         'date': frontmatter.get('date', ''),
                         'description': frontmatter.get('description', ''),
                         'url': frontmatter.get('url', ''),
-                        'thumbnail': frontmatter.get('thumbnail', ''),
+                        'thumbnail': thumbnail,
                         'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else []
                     }
                     articles.append(article)
