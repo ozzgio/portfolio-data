@@ -167,11 +167,21 @@ def validate_books(data: Any, images_dir: Path, result: ValidationResult) -> Non
             if url and not is_http_url(url):
                 result.error(f"{item_label}: `url` must be an absolute http/https URL when present")
 
+        slug = validate_string(item.get("slug"), "slug", item_label, result, required=True)
+
         is_internal = item.get("source") == "internal"
-        if is_internal and not item.get("slug"):
-            result.error(f"{item_label}: internal books must have a `slug`")
         if is_internal and not item.get("notes") and not is_reading:
             result.warn(f"{item_label}: internal book has no `notes` content")
+
+        if not is_reading:
+            structured_fields = ("concept", "problem", "decision", "effect", "trade_off")
+            missing = [f for f in structured_fields if not str(item.get(f) or "").strip()]
+            if missing:
+                result.warn(
+                    f"{item_label} ({item.get('title', '?')}): "
+                    f"missing structured sections: {', '.join(missing)}"
+                )
+
         rating = item.get("rating")
         if not isinstance(rating, (int, float)):
             result.error(f"{item_label}: `rating` must be numeric")
