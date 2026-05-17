@@ -1,5 +1,17 @@
 [
   {
+    "title": "The vault is my CMS",
+    "date": "2026-05-17",
+    "description": "I don't have a CMS. I have markdown files and a CI script that reads them. Here's how that happened and why Sunday is now the only deadline I track.",
+    "url": "",
+    "thumbnail": "https://picsum.photos/seed/2026-05-17-the-vault-is-my-cms/1200/630",
+    "tags": [
+      "Tech",
+      "Obsidian",
+      "Systems"
+    ]
+  },
+  {
     "title": "Synergym v2.33.1: A Leap Forward in User Experience and Functionality",
     "date": "2026-03-08",
     "description": "In this update, we've made significant strides in enhancing the user experience, refining our infrastructure, and introducing new features that make Synergym more versatile and engaging. Let's dive into the details.",
