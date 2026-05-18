@@ -118,6 +118,13 @@ def extract_section(body, section_name):
         return ''
     return content
 
+
+def normalize_json_value(value):
+    """Normalize YAML/python values to JSON-serializable primitives."""
+    if hasattr(value, 'isoformat'):
+        return value.isoformat()
+    return value
+
 def get_articles(vault_root=None):
     """Collect all published articles from blog/articles/YYYY/published/ folders."""
     articles = []
@@ -161,6 +168,12 @@ def get_articles(vault_root=None):
                 if frontmatter.get('status') == 'published' or frontmatter.get('url'):
                     slug = frontmatter.get('slug', '')
                     raw_thumbnail = frontmatter.get('thumbnail', '')
+                    article_url = frontmatter.get('url', '')
+                    article_body = body.strip() if isinstance(body, str) else ''
+
+                    # Internal article contract: slug + content, external URL optional.
+                    # If URL is empty but we have slug+content, mark as internal.
+                    is_internal = bool(slug and article_body and not article_url)
 
                     # Support dynamic thumbnail templates in frontmatter.
                     # Examples:
@@ -177,19 +190,30 @@ def get_articles(vault_root=None):
 
                     article = {
                         'title': frontmatter.get('title', ''),
-                        'date': frontmatter.get('date', ''),
+                        'date': normalize_json_value(frontmatter.get('date', '')),
                         'description': frontmatter.get('description', ''),
-                        'url': frontmatter.get('url', ''),
+                        'url': article_url,
                         'thumbnail': thumbnail,
                         'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else []
                     }
+
+                    if is_internal:
+                        article['source'] = 'internal'
+                        article['slug'] = slug
+                        article['content'] = article_body
+
                     articles.append(article)
             except Exception as e:
                 print(f"Error processing {md_file}: {e}")
                 continue
     
-    # Sort by date (newest first)
-    articles.sort(key=lambda x: x.get('date', ''), reverse=True)
+    # Sort by date (newest first) and normalize date types (str/date/datetime)
+    def _sortable_date(value):
+        if hasattr(value, 'isoformat'):
+            return value.isoformat()
+        return str(value or '')
+
+    articles.sort(key=lambda x: _sortable_date(x.get('date', '')), reverse=True)
     return articles
 
 def get_books(vault_root=None):
