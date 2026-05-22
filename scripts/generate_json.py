@@ -169,6 +169,9 @@ def get_articles(vault_root=None):
                 if str(frontmatter.get('status', '')).strip().lower() == 'draft':
                     continue
 
+                if str(frontmatter.get('blog', '')).strip().lower() == 'synergym':
+                    continue
+
                 slug = frontmatter.get('slug', '') or md_file.stem
                 raw_thumbnail = frontmatter.get('thumbnail', '')
                 article_url = frontmatter.get('url', '')
