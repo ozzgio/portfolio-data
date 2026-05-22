@@ -164,45 +164,45 @@ def get_articles(vault_root=None):
                 content = md_file.read_text(encoding='utf-8')
                 frontmatter, body = extract_frontmatter(content)
                 
-                # Only include if status is published (or if url exists)
-                if frontmatter.get('status') == 'published' or frontmatter.get('url'):
-                    slug = frontmatter.get('slug', '')
-                    raw_thumbnail = frontmatter.get('thumbnail', '')
-                    article_url = frontmatter.get('url', '')
-                    article_body = body.strip() if isinstance(body, str) else ''
+                # Folder is the publish gate: any file under .../published/ is exported.
+                # `status` is optional and no longer required for inclusion.
+                slug = frontmatter.get('slug', '') or md_file.stem
+                raw_thumbnail = frontmatter.get('thumbnail', '')
+                article_url = frontmatter.get('url', '')
+                article_body = body.strip() if isinstance(body, str) else ''
 
-                    # Internal article contract: slug + content, external URL optional.
-                    # If URL is empty but we have slug+content, mark as internal.
-                    is_internal = bool(slug and article_body and not article_url)
+                # Internal article contract: slug + content, external URL optional.
+                # If URL is empty but we have slug+content, mark as internal.
+                is_internal = bool(slug and article_body and not article_url)
 
-                    # Support dynamic thumbnail templates in frontmatter.
-                    # Examples:
-                    #   thumbnail: "https://picsum.photos/seed/{slug}/1200/630"
-                    #   thumbnail: "https://.../{{slug}}/..."
-                    # If thumbnail is missing, auto-generate from slug.
-                    thumbnail = raw_thumbnail
-                    if isinstance(raw_thumbnail, str) and raw_thumbnail:
-                        thumbnail = raw_thumbnail.replace('{slug}', slug).replace('{{slug}}', slug)
-                    elif slug:
-                        thumbnail = f"https://picsum.photos/seed/{slug}/1200/630"
-                    else:
-                        thumbnail = ''
+                # Support dynamic thumbnail templates in frontmatter.
+                # Examples:
+                #   thumbnail: "https://picsum.photos/seed/{slug}/1200/630"
+                #   thumbnail: "https://.../{{slug}}/..."
+                # If thumbnail is missing, auto-generate from slug.
+                thumbnail = raw_thumbnail
+                if isinstance(raw_thumbnail, str) and raw_thumbnail:
+                    thumbnail = raw_thumbnail.replace('{slug}', slug).replace('{{slug}}', slug)
+                elif slug:
+                    thumbnail = f"https://picsum.photos/seed/{slug}/1200/630"
+                else:
+                    thumbnail = ''
 
-                    article = {
-                        'title': frontmatter.get('title', ''),
-                        'date': normalize_json_value(frontmatter.get('date', '')),
-                        'description': frontmatter.get('description', ''),
-                        'url': article_url,
-                        'thumbnail': thumbnail,
-                        'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else []
-                    }
+                article = {
+                    'title': frontmatter.get('title', ''),
+                    'date': normalize_json_value(frontmatter.get('date', '')),
+                    'description': frontmatter.get('description', ''),
+                    'url': article_url,
+                    'thumbnail': thumbnail,
+                    'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else []
+                }
 
-                    if is_internal:
-                        article['source'] = 'internal'
-                        article['slug'] = slug
-                        article['content'] = article_body
+                if is_internal:
+                    article['source'] = 'internal'
+                    article['slug'] = slug
+                    article['content'] = article_body
 
-                    articles.append(article)
+                articles.append(article)
             except Exception as e:
                 print(f"Error processing {md_file}: {e}")
                 continue
