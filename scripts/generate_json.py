@@ -164,8 +164,11 @@ def get_articles(vault_root=None):
                 content = md_file.read_text(encoding='utf-8')
                 frontmatter, body = extract_frontmatter(content)
                 
-                # Folder is the publish gate: any file under .../published/ is exported.
-                # `status` is optional and no longer required for inclusion.
+                # Folder is the publish gate: any file under .../published/ is export-eligible.
+                # `status` is optional for published items, but explicit draft is always excluded.
+                if str(frontmatter.get('status', '')).strip().lower() == 'draft':
+                    continue
+
                 slug = frontmatter.get('slug', '') or md_file.stem
                 raw_thumbnail = frontmatter.get('thumbnail', '')
                 article_url = frontmatter.get('url', '')
