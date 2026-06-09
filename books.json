@@ -1,30 +1,5 @@
 [
   {
-    "title": "Fundamentals of Software Architecture",
-    "author": "Mark Richards, Neal Ford",
-    "cover": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1740",
-    "status": "read",
-    "rating": 4.5,
-    "tags": [
-      "Architecture",
-      "Engineering"
-    ],
-    "slug": "fundamentals-of-software-architecture",
-    "url": "",
-    "lesson": "Every codebase has an architecture. Most just never chose one.",
-    "notes": "**The problem**\nI had a Rails codebase with a 730-line model and a 874-line controller. Code reviews kept surfacing the same vague complaint: too coupled. I could not name which violation to fix first or explain why one was worse than another.\n\n**The concept**\nRichards and Ford give you a framework, not a checklist. Architecture characteristics as first-class design targets. Connascence as a coupling severity scale: static forms like name and algorithm are manageable, dynamic forms like execution order are dangerous. Fitness profiles that let you score one architecture style against another on the dimensions that actually matter for your context.\n\n**The decision**\nI audited Synergym against every major concept. Named the implicit style (layered monolith), scored its fitness profile, and wrote the first three ADRs the codebase ever had. The coupling in User.rb finally had a name: connascence of meaning and connascence of algorithm. That is enough to know where to start.\n\n**Effect**\nThree ADRs documented. One TypeScript spike shipped. One article published. The codebase did not change dramatically. What changed is that every structural decision now has a record and a reason. Full breakdown: Every Rails App Has an Architecture. Mine Just Didn't Know It Yet. — https://ozzo.blog/articles/rails-architecture-accumulated-by-default\n\n**Trade-off**\nThe book is written with enterprise and distributed systems in mind. A solo Rails app sits at the opposite end of that spectrum. You do the translation yourself. Not every chapter maps cleanly to a five-table monolith, but the vocabulary is worth the effort.",
-    "date": "",
-    "problem": "I had a Rails codebase with a 730-line model and a 874-line controller. Code reviews kept surfacing the same vague complaint: too coupled. I could not name which violation to fix first or explain why one was worse than another.",
-    "concept": "Richards and Ford give you a framework, not a checklist. Architecture characteristics as first-class design targets. Connascence as a coupling severity scale: static forms like name and algorithm are manageable, dynamic forms like execution order are dangerous. Fitness profiles that let you score one architecture style against another on the dimensions that actually matter for your context.",
-    "decision": "I audited Synergym against every major concept. Named the implicit style (layered monolith), scored its fitness profile, and wrote the first three ADRs the codebase ever had. The coupling in User.rb finally had a name: connascence of meaning and connascence of algorithm. That is enough to know where to start.",
-    "implementation": "",
-    "effect": "Three ADRs documented. One TypeScript spike shipped. One article published. The codebase did not change dramatically. What changed is that every structural decision now has a record and a reason. Full breakdown: Every Rails App Has an Architecture. Mine Just Didn't Know It Yet. — https://ozzo.blog/articles/rails-architecture-accumulated-by-default",
-    "trade_off": "The book is written with enterprise and distributed systems in mind. A solo Rails app sits at the opposite end of that spectrum. You do the translation yourself. Not every chapter maps cleanly to a five-table monolith, but the vocabulary is worth the effort.",
-    "tldr": "",
-    "deep_dive": "",
-    "quotes": []
-  },
-  {
     "title": "Learning Domain-Driven Design",
     "author": "Vlad Khononov",
     "cover": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1740",
@@ -69,6 +44,31 @@
     "implementation": "Noticed the pattern \"I'll be honest with you...\" and stopped saying it. You should always be honest, flagging it as a special occasion is its own kind of dishonesty. I also dropped blaming circumstances for things I could control, and started treating meditation as a daily practice rather than something to do when things go sideways.",
     "effect": "I watch behavior in people around me more clearly now, including my own, and I don't conflate the two. I can see something in someone else and recognise it without needing to call it out. I correct mine and move on.",
     "trade_off": "Read it once and you'll underline things. Read it again and you'll find different ones. One pass isn't enough, the same sentence lands differently depending on where you are when you read it.",
+    "tldr": "",
+    "deep_dive": "",
+    "quotes": []
+  },
+  {
+    "title": "Fundamentals of Software Architecture",
+    "author": "Mark Richards, Neal Ford",
+    "cover": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1740",
+    "status": "read",
+    "rating": 4.5,
+    "url": "",
+    "tags": [
+      "Architecture",
+      "Engineering"
+    ],
+    "lesson": "Every codebase has an architecture. Most just never chose one.",
+    "notes": "**The problem**\nI had a Rails codebase with a 730-line model and a 874-line controller. Code reviews kept surfacing the same vague complaint: too coupled. I could not name which violation to fix first or explain why one was worse than another.\n\n**The concept**\nRichards and Ford give you a framework, not a checklist. Architecture characteristics as first-class design targets. Connascence as a coupling severity scale: static forms like name and algorithm are manageable, dynamic forms like execution order are dangerous. Fitness profiles that let you score one architecture style against another on the dimensions that actually matter for your context.\n\n**The decision**\nI audited Synergym against every major concept. Named the implicit style (layered monolith), scored its fitness profile, and wrote the first three ADRs the codebase ever had. The coupling in User.rb finally had a name: connascence of meaning and connascence of algorithm. That is enough to know where to start.\n\n**Effect**\nThree ADRs documented. One TypeScript spike shipped. One article published. The codebase did not change dramatically. What changed is that every structural decision now has a record and a reason. Full breakdown: [Every Rails App Has an Architecture. Mine Just Didn't Know It Yet.](https://ozzo.blog/articles/rails-architecture-accumulated-by-default)\n\n**Trade-off**\nThe book is written with enterprise and distributed systems in mind. A solo Rails app sits at the opposite end of that spectrum. You do the translation yourself. Not every chapter maps cleanly to a five-table monolith, but the vocabulary is worth the effort.",
+    "date": "",
+    "slug": "fundamentals-of-software-architecture",
+    "problem": "I had a Rails codebase with a 730-line model and a 874-line controller. Code reviews kept surfacing the same vague complaint: too coupled. I could not name which violation to fix first or explain why one was worse than another.",
+    "concept": "Richards and Ford give you a framework, not a checklist. Architecture characteristics as first-class design targets. Connascence as a coupling severity scale: static forms like name and algorithm are manageable, dynamic forms like execution order are dangerous. Fitness profiles that let you score one architecture style against another on the dimensions that actually matter for your context.",
+    "decision": "I audited Synergym against every major concept. Named the implicit style (layered monolith), scored its fitness profile, and wrote the first three ADRs the codebase ever had. The coupling in User.rb finally had a name: connascence of meaning and connascence of algorithm. That is enough to know where to start.",
+    "implementation": "",
+    "effect": "Three ADRs documented. One TypeScript spike shipped. One article published. The codebase did not change dramatically. What changed is that every structural decision now has a record and a reason. Full breakdown: [Every Rails App Has an Architecture. Mine Just Didn't Know It Yet.](https://ozzo.blog/articles/rails-architecture-accumulated-by-default)",
+    "trade_off": "The book is written with enterprise and distributed systems in mind. A solo Rails app sits at the opposite end of that spectrum. You do the translation yourself. Not every chapter maps cleanly to a five-table monolith, but the vocabulary is worth the effort.",
     "tldr": "",
     "deep_dive": "",
     "quotes": []
