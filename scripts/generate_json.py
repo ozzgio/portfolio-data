@@ -126,12 +126,12 @@ def normalize_json_value(value):
     return value
 
 def get_articles(vault_root=None):
-    """Collect all published articles from blog/articles/YYYY/published/ folders."""
+    """Collect all published articles from blog/ozzo/articles/YYYY/published/ folders."""
     articles = []
     if vault_root:
-        articles_dir = Path(vault_root) / 'blog/articles'
+        articles_dir = Path(vault_root) / 'blog/ozzo/articles'
     else:
-        articles_dir = Path('blog/articles')
+        articles_dir = Path('blog/ozzo/articles')
     
     if not articles_dir.exists():
         print(f"Warning: Articles directory not found at {articles_dir}")
@@ -329,9 +329,9 @@ def validate_path(path, must_exist=True, must_be_dir=False):
 def copy_images(vault_root=None, output_dir='data', dry_run=False):
     """Copy article images to data/images/ for the portfolio repo."""
     if vault_root:
-        images_source = Path(vault_root) / 'blog/articles/images'
+        images_source = Path(vault_root) / 'blog/ozzo/images'
     else:
-        images_source = Path('blog/articles/images')
+        images_source = Path('blog/ozzo/images')
     
     images_dest = Path(output_dir) / 'images'
     
