@@ -125,6 +125,67 @@ def normalize_json_value(value):
         return value.isoformat()
     return value
 
+
+def slugify_text(value):
+    """Create a stable slug-like key for comparisons."""
+    value = str(value or '').strip().lower()
+    value = re.sub(r'[^a-z0-9]+', '-', value)
+    return value.strip('-')
+
+
+def normalize_lookup_key(value):
+    """Normalize a human label to a compact comparison key."""
+    return re.sub(r'[^a-z0-9]+', '', slugify_text(value))
+
+
+def parse_article_book_reference(raw_value):
+    """Parse an article book reference from frontmatter."""
+    text = str(raw_value or '').strip()
+    if not text:
+        return {'label': '', 'title': '', 'url': ''}
+
+    markdown_link = re.match(r'^\[(?P<label>[^\]]+)]\((?P<url>[^)]+)\)$', text)
+    if markdown_link:
+        label = markdown_link.group('label').strip()
+        url = markdown_link.group('url').strip()
+        return {'label': label, 'title': label, 'url': url}
+
+    wikilink = re.match(r'^\[\[(?P<target>[^\]|]+)(?:\|(?P<label>[^\]]+))?]]$', text)
+    if wikilink:
+        target = wikilink.group('target').strip()
+        label = (wikilink.group('label') or target).strip()
+        return {'label': label, 'title': target, 'url': ''}
+
+    title = re.split(r'\s+[—-]\s+', text, maxsplit=1)[0].strip() or text
+    return {'label': title, 'title': title, 'url': ''}
+
+
+def enrich_article_book_links(articles, books):
+    """Attach internal book URLs to article references when a matching book exists."""
+    book_lookup = {}
+    for book in books:
+        title = str(book.get('title', '')).strip()
+        slug = str(book.get('slug', '')).strip()
+        if title and slug:
+            book_lookup[normalize_lookup_key(title)] = slug
+
+    for article in articles:
+        parsed = parse_article_book_reference(article.get('book', ''))
+        article['book'] = parsed['label']
+
+        if parsed['url']:
+            article['book_url'] = parsed['url']
+            continue
+
+        candidates = [parsed['title'], parsed['label'], article.get('book', '')]
+        for candidate in candidates:
+            key = normalize_lookup_key(candidate)
+            if key in book_lookup:
+                article['book_url'] = f"/books/{book_lookup[key]}"
+                break
+
+    return articles
+
 def get_articles(vault_root=None):
     """Collect all published articles from blog/ozzo/articles/YYYY/published/ folders."""
     articles = []
@@ -200,7 +261,9 @@ def get_articles(vault_root=None):
                     'description': frontmatter.get('description', ''),
                     'url': article_url,
                     'thumbnail': thumbnail,
-                    'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else []
+                    'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else [],
+                    'book': frontmatter.get('book', ''),
+                    'book_url': '',
                 }
 
                 if is_internal:
@@ -461,21 +524,24 @@ Examples:
     
     # Copy images first
     copy_images(vault_root, output_dir, dry_run=args.dry_run)
-    
-    # Generate articles.json
+
+    # Collect content before writing so article references can be enriched with book URLs.
     articles = get_articles(vault_root)
+    books = get_books(vault_root)
+    articles = enrich_article_book_links(articles, books)
+
+    # Generate articles.json
     if not args.dry_run:
         with open(articles_path, 'w', encoding='utf-8') as f:
             json.dump(articles, f, ensure_ascii=False, indent=2)
         print(f"\nGenerated {articles_path} with {len(articles)} articles")
     else:
         print(f"\n[DRY RUN] Would generate {articles_path} with {len(articles)} articles")
-    
+
     for article in articles:
         print(f"  - {article.get('title', 'Untitled')} ({article.get('date', 'no date')})")
-    
+
     # Generate books.json
-    books = get_books(vault_root)
     if not args.dry_run:
         with open(books_path, 'w', encoding='utf-8') as f:
             json.dump(books, f, ensure_ascii=False, indent=2)
