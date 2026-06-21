@@ -206,11 +206,6 @@ def report_duplicates(values: list[str], label: str, result: ValidationResult) -
         result.error(f"Duplicate {label}: `{value}`")
 
 
-def compare_mirrors(root_data: Any, mirrored_data: Any, label: str, result: ValidationResult) -> None:
-    if root_data != mirrored_data:
-        result.error(f"{label} root file and data mirror are out of sync")
-
-
 def main() -> int:
     repo_root = Path(__file__).resolve().parent.parent
     images_dir = repo_root / "images"
@@ -218,8 +213,6 @@ def main() -> int:
 
     root_articles = load_json(repo_root / "articles.json", result)
     root_books = load_json(repo_root / "books.json", result)
-    mirrored_articles = load_json(repo_root / "data" / "articles.json", result, required=False)
-    mirrored_books = load_json(repo_root / "data" / "books.json", result, required=False)
 
     if images_dir.exists() and not images_dir.is_dir():
         result.error("`images/` exists but is not a directory")
@@ -228,15 +221,6 @@ def main() -> int:
         validate_articles(root_articles, images_dir, result)
     if root_books is not None:
         validate_books(root_books, images_dir, result)
-    if root_articles is not None and mirrored_articles is not None:
-        compare_mirrors(root_articles, mirrored_articles, "articles.json", result)
-    elif (repo_root / "data" / "articles.json").exists():
-        result.warn("articles.json data mirror exists but could not be validated")
-
-    if root_books is not None and mirrored_books is not None:
-        compare_mirrors(root_books, mirrored_books, "books.json", result)
-    elif (repo_root / "data" / "books.json").exists():
-        result.warn("books.json data mirror exists but could not be validated")
 
     print("portfolio-data validation summary")
     if root_articles is not None:

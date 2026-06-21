@@ -7,7 +7,6 @@ on:
     paths:
       - 'articles.json'
       - 'books.json'
-      - 'data/**'
       - 'images/**'
       - 'scripts/validate_content.py'
       - '.github/workflows/generate-json.yml'
@@ -15,7 +14,6 @@ on:
     paths:
       - 'articles.json'
       - 'books.json'
-      - 'data/**'
       - 'images/**'
       - 'scripts/validate_content.py'
       - '.github/workflows/generate-json.yml'
@@ -40,4 +38,4 @@ jobs:
         if: always()
         run: |
           echo "## Portfolio Data Validation" >> $GITHUB_STEP_SUMMARY
-          echo "Validated JSON mirrors, required fields, URL formats, and referenced image files." >> $GITHUB_STEP_SUMMARY
+          echo "Validated required fields, URL formats, and referenced image files." >> $GITHUB_STEP_SUMMARY
