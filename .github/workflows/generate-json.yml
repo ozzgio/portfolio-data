@@ -34,6 +34,24 @@ jobs:
       - name: Validate published artifacts
         run: python3 scripts/validate_content.py
 
+      # After content validates on main, trigger an ozzo.blog rebuild via a
+      # Vercel Deploy Hook so new articles are generated as static HTML at
+      # build time instead of racing GitHub's raw-CDN propagation at request
+      # time. PRs and manual runs are skipped; a missing secret skips safely.
+      - name: Rebuild ozzo.blog
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            echo "VERCEL_DEPLOY_HOOK_URL not set; skipping rebuild trigger."
+            exit 0
+          fi
+          curl --fail -X POST "$VERCEL_DEPLOY_HOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d '{"source":"portfolio-data","ref":"'$GITHUB_SHA'"}' >/dev/null
+          echo "Triggered ozzo.blog rebuild via Vercel deploy hook."
+
       - name: Summary
         if: always()
         run: |
