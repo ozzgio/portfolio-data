@@ -79,6 +79,26 @@ def validate_tags(value: Any, item_label: str, result: ValidationResult) -> list
     return tags
 
 
+def validate_references(value: Any, item_label: str, result: ValidationResult) -> None:
+    # Optional citation list emitted by generate_json.py as [{label, url}].
+    # Absent field is fine (most articles have none); present-but-wrong-shape
+    # is an error so a generator regression doesn't ship silently.
+    if not isinstance(value, list):
+        result.error(f"{item_label}: `references` must be an array when present")
+        return
+    for index, ref in enumerate(value, start=1):
+        where = f"{item_label}: `references[{index}]`"
+        if not isinstance(ref, dict):
+            result.error(f"{where} must be an object")
+            continue
+        label = validate_string(ref.get("label"), "label", where, result, required=False)
+        url = validate_string(ref.get("url"), "url", where, result, required=False)
+        if url and not is_http_url(url):
+            result.error(f"{where}: `url` must be an absolute http/https URL")
+        if not label and not url:
+            result.warn(f"{where} has neither label nor url")
+
+
 def validate_date(value: str, item_label: str, result: ValidationResult) -> None:
     if not DATE_RE.match(value):
         result.error(f"{item_label}: `date` must use YYYY-MM-DD")
@@ -134,6 +154,8 @@ def validate_articles(data: Any, images_dir: Path, result: ValidationResult) -> 
             validate_local_asset(thumbnail, images_dir, "thumbnail", item_label, result)
         if not tags:
             result.warn(f"{item_label}: no tags provided")
+        if item.get("references") is not None:
+            validate_references(item.get("references"), item_label, result)
 
     report_duplicates(titles, "article titles", result)
     report_duplicates(urls, "article URLs", result)

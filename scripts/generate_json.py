@@ -255,6 +255,21 @@ def get_articles(vault_root=None):
                 else:
                     thumbnail = ''
 
+                # Optional citation list. Each entry is a markdown link or
+                # plain string, parsed by the same helper used for `book`, so
+                # "[Label](url)", "[[wikilink]]", and bare text all work.
+                raw_references = frontmatter.get('references')
+                references = []
+                if isinstance(raw_references, list):
+                    references = [
+                        {'label': parsed['label'], 'url': parsed['url']}
+                        for parsed in (
+                            parse_article_book_reference(entry)
+                            for entry in raw_references
+                            if isinstance(entry, str)
+                        )
+                    ]
+
                 article = {
                     'title': frontmatter.get('title', ''),
                     'date': normalize_json_value(frontmatter.get('date', '')),
@@ -264,6 +279,7 @@ def get_articles(vault_root=None):
                     'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else [],
                     'book': frontmatter.get('book', ''),
                     'book_url': '',
+                    'references': references,
                 }
 
                 if is_internal:
