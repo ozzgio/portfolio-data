@@ -160,6 +160,33 @@ def parse_article_book_reference(raw_value):
     return {'label': title, 'title': title, 'url': ''}
 
 
+def parse_article_citation_reference(raw_value):
+    """Parse a `references` entry from frontmatter.
+
+    Shares markdown-link and wikilink handling with
+    parse_article_book_reference, but bare text is kept whole: the
+    `book` field's "Title - Author" split would silently truncate a
+    citation label like "How to Quit Your Job - Ali Abdaal x Paul Millerd".
+    """
+    text = str(raw_value or '').strip()
+    if not text:
+        return {'label': '', 'url': ''}
+
+    markdown_link = re.match(r'^\[(?P<label>[^\]]+)]\((?P<url>[^)]+)\)$', text)
+    if markdown_link:
+        return {
+            'label': markdown_link.group('label').strip(),
+            'url': markdown_link.group('url').strip(),
+        }
+
+    wikilink = re.match(r'^\[\[(?P<target>[^\]|]+)(?:\|(?P<label>[^\]]+))?]]$', text)
+    if wikilink:
+        target = wikilink.group('target').strip()
+        return {'label': (wikilink.group('label') or target).strip(), 'url': ''}
+
+    return {'label': text, 'url': ''}
+
+
 def enrich_article_book_links(articles, books):
     """Attach internal book URLs to article references when a matching book exists."""
     book_lookup = {}
@@ -255,6 +282,18 @@ def get_articles(vault_root=None):
                 else:
                     thumbnail = ''
 
+                # Optional citation list. Each entry is a markdown link,
+                # wikilink, or plain string: "[Label](url)", "[[wikilink]]",
+                # and bare text all work, with bare text kept whole.
+                raw_references = frontmatter.get('references')
+                references = []
+                if isinstance(raw_references, list):
+                    references = [
+                        parse_article_citation_reference(entry)
+                        for entry in raw_references
+                        if isinstance(entry, str)
+                    ]
+
                 article = {
                     'title': frontmatter.get('title', ''),
                     'date': normalize_json_value(frontmatter.get('date', '')),
@@ -264,6 +303,7 @@ def get_articles(vault_root=None):
                     'tags': frontmatter.get('tags', []) if isinstance(frontmatter.get('tags'), list) else [],
                     'book': frontmatter.get('book', ''),
                     'book_url': '',
+                    'references': references,
                 }
 
                 if is_internal:
