@@ -1,10 +1,43 @@
 [
   {
+    "title": "The Test That Ends the Project",
+    "date": "2026-08-30",
+    "description": "I solved five problems in a row inside a virtual machine and none of them mattered. The ten minute experiment I never ran would have killed the whole path on the first evening. The cheapest test is the one that can end the project.",
+    "url": "",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-30-the-test-that-ends-the-project.png",
+    "tags": [
+      "SWE",
+      "Systems",
+      "Personal"
+    ],
+    "references": [
+      {
+        "label": "Debugging: The 9 Indispensable Rules, David J. Agans",
+        "url": "https://debuggingrules.com"
+      },
+      {
+        "label": "On the Failure to Eliminate Hypotheses in a Conceptual Task, P. C. Wason, 1960",
+        "url": "https://journals.sagepub.com/doi/10.1080/17470216008416717"
+      },
+      {
+        "label": "Intuitive Evaluation of Likelihood Judgment Producers: Evidence for a Confidence Heuristic, Price and Stone, 2004",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/bdm.460"
+      },
+      {
+        "label": "A pitch is not proof",
+        "url": "https://ozzo.blog/articles/a-pitch-is-not-proof"
+      }
+    ],
+    "source": "internal",
+    "slug": "the-test-that-ends-the-project",
+    "content": "> **TL;DR:** I fixed five problems in a row inside a virtual machine and every fix worked. None of them mattered. A ten minute experiment I never thought to run would have told me on the first evening that the whole path was dead. Then I made the same mistake pointing the other way, and believed a person over a document.\n\n>  ⚠️ **Not a tutorial.** ⚠️ \n>  This is a field note about how I debug, not a guide to anything. The hardware work in it means writing firmware to a component worth more than the tool I used, with a real chance of destroying it. I am not describing how, and you should not copy any of it. The engineering lesson is in the middle and it has nothing to do with cars.\n\n## Thesis\n\nThe cheapest test in a project is usually the one that can end it. I run that test last, when I run it at all, because killing a path feels like losing and fixing an error feels like winning.\n\nLast week that habit cost me two evenings, and taught me a rule I had already read in a book.\n\n## Real problem\n\nI wanted to reflash the engine control unit on an old diesel, software only and fully reversible. The tool is a €25 clone flasher: a Windows program with a kernel-mode driver under it. My only Windows is a virtual machine on an Apple Silicon Mac, which means Windows on ARM64.\n\nThe driver would not install. So I did what I always do, which is start fixing things.\n\nThe installer had no section for my architecture, so I wrote one. Windows refused it as unsigned, so I disabled signature enforcement at boot. The vulnerable driver blocklist caught it, so I turned the blocklist off. Code Integrity rejected the unsigned kernel module, so I made a certificate, signed the driver and enabled test signing. Code Integrity rejected it again for not being in a catalog, so I built a catalog, signed that too, and referenced it from the installer.\n\nFive obstacles, five fixes. Every one worked, in the sense that its error stopped appearing and a new one took its place. By the end the install log was clean: valid catalog, trusted publisher, imported successfully. And the device was still dead, with the same status code it had shown before I touched anything.\n\nOne detail I looked straight at and did not read: Code Integrity had stopped logging events entirely. Whatever was refusing the driver was no longer the subsystem I had spent two evenings negotiating with. I had won every argument I picked, and I was picking them with the wrong opponent.\n\n## The experiment I did not run\n\nAll five fixes rested on the same assumption, that this machine could load a driver of this kind at all. I never tested it, not because it was hard, but because it never appeared as an error message. It was the floor I was standing on, and you do not test the floor, you stand on it.\n\nTesting it took ten minutes. I copied a driver that ships with the operating system, signed it with the same self-signed certificate, registered it as a kernel service and started it. Same certificate, same test mode, same trust stores, one difference: mine was built for ARM64 and the vendor's for x64.\n\nMine loaded and ran. The vendor's was refused before it reached its first instruction.\n\nThat is the whole answer, and it is architectural. Windows on ARM emulates user space, not the kernel, because a kernel-mode binary shares an address space and a calling convention with the kernel itself. The flasher application is 32-bit x86 and would have run fine under emulation. That is exactly why this looked like a driver problem for two evenings. The part I could see running was never the part that could not run.\n\n## What the research already knew\n\nThe uncomfortable part is that this failure is thoroughly documented, and I own the book that names it.\n\nDavid Agans wrote [Debugging: The 9 Indispensable Rules](https://debuggingrules.com) in 2002, and one of the nine is \"Change One Thing at a Time\". I have quoted that rule to other people. What I had absorbed was the narrow version, about not editing three files before you rerun the test. What I had missed is that it only works if you will suspect the variables that are not throwing errors. My five fixes each changed one thing at a time, obediently, and taught me nothing, because I never put the architecture in the position of being the thing that changed.\n\nUnderneath it sits something older. In 1960 Peter Wason published a paper with a title I now find personally rude, [On the failure to eliminate hypotheses in a conceptual task](https://journals.sagepub.com/doi/10.1080/17470216008416717). He showed people the sequence 2-4-6, said it followed a hidden rule, and asked them to find the rule by proposing more sequences and being told yes or no. The rule was just \"any three ascending numbers\". People formed a hypothesis, then proposed sequence after sequence that would confirm it. Very few proposed one that could have proved them wrong. Of twenty nine participants, six got there without announcing a wrong rule first.\n\nThat is what I did for two evenings. Every fix was a confirming instance, every new error a yes, this path is still alive, keep going. I never generated the test whose answer could have been \"stop\".\n\nKnowing this did not prevent it. What the research gives you is a name for the shape, so you catch it earlier next time.\n\n## The same mistake, pointing the other way\n\nThe fix was not a patch, it was a different machine. I moved the job to an old x86 laptop running Windows 10 and the driver installed first try, no certificates, no boot flags.\n\nThen I made the same mistake in the opposite direction, within a day.\n\nThe person who sold me the tool said the operation I needed was not supported over the diagnostic port, and required removing the module from the vehicle. I believed it, and planned the whole alternative: cable colours mapped to connector pins, power and ground and communication lines, the right boot software. Hours of careful work on a premise I never checked.\n\nThen I opened the official support table for the exact software version I had installed. My configuration was listed as supported, on both protocols, for precisely the operation I had spent an evening routing around. It was a PDF and it took a minute to find.\n\nA confident answer from a knowledgeable person is a hypothesis. The document is the test.\n\nThere is a name for why I did not treat it that way. In 2004 Paul Price and Eric Stone had people choose between two financial advisors, one well calibrated and one systematically overconfident. People preferred the overconfident one, judging him more knowledgeable and more accurate, and the effect was strongest when they had no way to check who had actually been right. They called it the [confidence heuristic](https://onlinelibrary.wiley.com/doi/abs/10.1002/bdm.460). We read certainty as competence, because usually that is cheaper than verifying.\n\nWhat makes it worse is that the seller was not overconfident. He was being careful, and a careful answer delivered plainly reads exactly like an authoritative one. He only needed to sound sure, and I supplied the rest myself.\n\n## What it cost\n\nThe first cost is the setup. My whole toolchain lives on one laptop and I liked it that way. The honest answer was a second physical machine I do not want and will use for one thing.\n\nThe second is real risk. Writing firmware is not deploying code. There is no rollback. If the write stops halfway the part is dead, and reviving it takes different hardware from the one that killed it.\n\nI took that risk because the alternative was worse. Staying on the Mac meant full x86 emulation, which would have worked and would also have been ten to thirty times slower over an emulated USB connection. Slow is fine for reading. For writing it is the one thing you cannot afford: the longer a write takes, the more chances it has to stall, and a stall is the failure that kills the part.\n\nSo I bounded the risk instead of avoiding it. Before writing anything I read the original firmware off the module and checked that the data sat in one continuous block, that it looked like calibration data rather than noise, and that the module's own identifier appeared where it should. Three copies saved, one read-only. When the modified file came back I diffed it against my original: 1806 bytes different, 0.086% of the file, all inside the calibration area, nothing in the boot region, checksum correctly recomputed.\n\nOnly then did I write it, with one rule fixed beforehand, because in the documented failures the damage got worse after the first error: if the write fails, stop touching it.\n\n## What I am changing\n\nBefore the third fix in a row, I stop and write down the assumption that would make all three pointless, then run the smallest test that isolates it before I run the fourth. The test has to move exactly one variable or the result means nothing. Mine moved the architecture of a binary and held the certificate, the signing mode and the trust stores still, which is the only reason it was worth anything.\n\nAnd when someone knowledgeable says something is not possible, I find the primary document first. Caution and impossibility produce the same sentence, in the same tone.\n\nHalf of this is not new here. [A pitch is not proof](https://ozzo.blog/articles/a-pitch-is-not-proof) was the same lesson in a business suit: I treated a portfolio as worth building without testing whether the problem existed outside my head. I wrote that at the start of August, then did the identical thing to a device driver three weeks later, which says something uncomfortable about how much writing a lesson down transfers it.\n\nWhat is new is the ordering. Knowing you should test the assumption is not the same as knowing when, and the answer is first, while stopping is still cheap. Every hour spent fixing raises the price of hearing no. That is why the killing test gets postponed, and why it has to go first.\n\nFive fixes in a row that all work, with nothing improving, is not progress. It is the loudest signal you get that the assumption underneath all five is the actual bug.\n\nSo the question I owe you this week is this.\n\nWhat is the assumption underneath your current project that you have never tested, because it has never thrown an error?"
+  },
+  {
     "title": "The Week I Didn't Write",
     "date": "2026-08-23",
     "description": "I missed the weekly article. Umami emailed to tell me no one had even loaded the page. The fix is not a better cadence. It is treating the writing as a conversation, not a deliverable.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-08-23-the-week-i-didnt-write/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-23-the-week-i-didnt-write.png",
     "tags": [
       "Personal",
       "Writing",
@@ -33,7 +66,7 @@
     "date": "2026-08-16",
     "description": "A starter repo freezes one app's assumptions. A reference project and a small CI gate preserve the decisions that earned reuse.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-08-16-the-starter-repo-i-didnt-build/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-16-the-starter-repo-i-didnt-build.png",
     "tags": [
       "Tech",
       "Systems",
@@ -62,7 +95,7 @@
     "date": "2026-08-09",
     "description": "Two X posts produced 26 views but no feedback. A feedback ladder shows how a solo developer turns attention into evidence for the next decision.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-08-09-a-post-is-not-distribution/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-09-a-post-is-not-distribution.png",
     "tags": [
       "Personal",
       "Writing",
@@ -91,7 +124,7 @@
     "date": "2026-08-02",
     "description": "Five days after publishing my six-week Rails portfolio plan, I changed it. The next app now needs an external problem before it earns a cycle.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-08-02-a-pitch-is-not-proof/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-02-a-pitch-is-not-proof.png",
     "tags": [
       "Personal",
       "Systems",
@@ -140,7 +173,7 @@
     "date": "2026-07-26",
     "description": "I followed my own six-week plan for bet 1 and shipped the real thing in three days. The plan was still wrong, and I did not notice until it had already cost a week of feedback.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-07-26-a-plan-is-not-a-pitch/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-26-a-plan-is-not-a-pitch.png",
     "tags": [
       "Personal",
       "Systems",
@@ -165,7 +198,7 @@
     "date": "2026-07-19",
     "description": "I took Synergym to the payment flow and had no idea how to show it to anyone. The fix was not a better channel. It was not treating distribution as a separate phase.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-07-19-the-product-was-never-the-hard-part/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-19-the-product-was-never-the-hard-part.png",
     "tags": [
       "Personal",
       "Rails"
@@ -193,7 +226,7 @@
     "date": "2026-07-12",
     "description": "Sending ten emails felt like the hard part. A week later the real one showed up disguised as a phone number, and then again as my own name on a page I had kept empty.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-07-11-the-vulnerable-move-has-layers/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-11-the-vulnerable-move-has-layers.png",
     "tags": [
       "Personal",
       "Systems"
@@ -213,7 +246,7 @@
     "date": "2026-07-04",
     "description": "When a task gets human, my instinct is to build a system instead. This week I sent the emails by hand and logged what actually came back.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-07-05-i-almost-automated-the-hardest-part/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-04-i-almost-automated-the-hardest-part.png",
     "tags": [
       "Personal",
       "Systems"
@@ -228,7 +261,7 @@
     "date": "2026-06-28",
     "description": "I use AI for search, reminders, and structure, not for the parts where the friction is the point.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-06-28-the-things-im-not-using-ai-for/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-28-the-things-im-not-using-ai-for.png",
     "tags": [
       "Tech",
       "Writing",
@@ -244,7 +277,7 @@
     "date": "2026-06-17",
     "description": "I almost split two classes into their own folders to \"enforce\" a bounded context. Instead I wrote one test. It caught a real violation on its first run.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-06-21-bounded-context/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-21-bounded-context-test-not-folder.png",
     "tags": [
       "Architecture",
       "Rails",
@@ -260,7 +293,7 @@
     "date": "2026-06-13",
     "description": "I knew User.rb was a problem. 730 lines, roles scattered everywhere, unit conversions duplicated across four methods. I could feel the coupling. Connascence gave me the vocabulary to name it and rank it.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-06-13-connascence/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-13-connascence-the-coupling-your-rails-app-cant-name.png",
     "tags": [
       "Architecture",
       "Rails",
@@ -276,7 +309,7 @@
     "date": "2026-06-07",
     "description": "My daily note had quietly stopped being a journal. It was performing organisation instead of capturing reality. This is the correction.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-06-07-personal-journal-split/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-04-draft-personal-journal-vs-operational-log.png",
     "tags": [
       "Systems",
       "Personal"
@@ -291,7 +324,7 @@
     "date": "2026-05-31",
     "description": "I had a 874-line controller and no architecture document. Reading Fundamentals of Software Architecture forced the first explicit trade-off decisions this codebase had ever had.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-05-31-rails-architecture/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-31-rails-architecture-accumulated-by-default.png",
     "tags": [
       "Architecture",
       "Rails",
@@ -307,7 +340,7 @@
     "date": "2026-05-22",
     "description": "I wrote the wrong article this week and used that mistake to define a stricter rule for what belongs on ozzo.blog versus product channels.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-05-22-writing-without-hiding/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-22-writing-without-hiding.png",
     "tags": [
       "Tech",
       "Writing",
@@ -323,7 +356,7 @@
     "date": "2026-05-17",
     "description": "I don't have a CMS. I have markdown files and a CI script that reads them. Here's how that happened and why Sunday is now the only deadline I track.",
     "url": "",
-    "thumbnail": "https://picsum.photos/seed/2026-05-17-the-vault-is-my-cms/1200/630",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-17-the-vault-is-my-cms.png",
     "tags": [
       "Tech",
       "Systems"
