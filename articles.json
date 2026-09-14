@@ -1,5 +1,30 @@
 [
   {
+    "title": "The Week I Wanted an Audience",
+    "date": "2026-09-13",
+    "description": "A free app can turn private learning into something people can use and respond to. It still has to be worth sharing with its first players.",
+    "url": "",
+    "thumbnail": "",
+    "tags": [
+      "Systems",
+      "Personal",
+      "Writing"
+    ],
+    "references": [
+      {
+        "label": "Marketing for Product-Obsessed Developers, Marc Lou",
+        "url": "https://newsletter.marclou.com/p/marketing-for-product-obsessed-developers"
+      },
+      {
+        "label": "Why Nobody Is Following You Yet, Marc Lou",
+        "url": "https://newsletter.marclou.com/p/why-nobody-is-following-you-yet"
+      }
+    ],
+    "source": "internal",
+    "slug": "the-week-i-wanted-an-audience",
+    "content": "> **TL;DR:** I want distribution because learning that stays in my vault cannot help anyone or be challenged. A free football game can carry that work into the world.\n\n> It still has to be worth playing without the strategy behind it.\n\n## The week I wanted an audience\n\nI spent part of last week reading Marc Lou's older writing about free apps and attention.\n\nThe idea stayed with me: make something small and free that people can use, then let the usefulness do some of the distribution.\n\nI want an audience, but not only as a number. I have learned by researching ideas, fixing things that broke, making decisions, and writing them down.\n\nA vault can prove that work happened. It cannot let the work help anyone, or let someone disagree with it.\n\nDistribution is how those private lessons meet other people. It is how I find out whether what I think I have learned survives contact with someone else's reality.\n\nAt the same time, I was thinking about a free football-predictions game. Not betting, money, tips, or prizes. Just the game friends already play in a group chat, made a little more deliberate.\n\nI gave it a name, mapped the rules, checked the data, and talked about it with friends. They did not give me a market-research answer. They said they could picture playing it together.\n\nFor this kind of game, that is the first useful evidence.\n\n## A free app, not a disguise\n\nMarc's model fits. The game can be public, teach me how to build a social product, and make my work easier to discover. That is a good reason to distribute it.\n\nBut it cannot be the only reason to make it. If every decision serves the audience I hope to get, friends become the first users of a funnel built for myself.\n\nThe game has a simpler promise: give a group something engaging and funny enough to share. Curiosity opens it; friendly competition gives them a reason to return. The free-app strategy supports that promise. It cannot replace it.\n\nThe next step is small: put a version in front of the friends who said they would play. The test is not whether it solves a painful problem.\n\nIt is whether they return before the next kickoff, invite someone, or bring the scoreboard into the conversation.\n\n## What I want to keep doing\n\nI want to keep learning in public from things I have actually done: a build, a bug, a conversation, a decision that cost something. The daily brain dump gives me the raw record. The article is where I find the one thing worth passing on.\n\nMy rule is simple: build the small thing, write down what happened, and share the lesson only when it has met a real person or a real constraint.\n\nThat is the difference I am trying to protect: not a dream about an audience, but a trail of work that earns the chance to reach one.\n\nIf you have read this far, the question I owe you is this.\n\nWhat small thing could you make that people would share because it makes their group more curious, competitive, or amused?"
+  },
+  {
     "title": "The Fifth Time I Wrote This Down",
     "date": "2026-09-06",
     "description": "I have published the same lesson four times since July and did it again this week. The interesting question is not what the lesson is. It is why writing a lesson down does nothing, and what does.",
