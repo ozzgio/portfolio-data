@@ -1,5 +1,38 @@
 [
   {
+    "title": "One True Signal",
+    "date": "2026-09-20",
+    "description": "My journaling rule is one true sentence on a thin day. This week I used it everywhere else, and cutting input produced more than adding it.",
+    "url": "",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-20-one-true-signal.png",
+    "tags": [
+      "Personal",
+      "Systems",
+      "Writing"
+    ],
+    "references": [
+      {
+        "label": "5 Journal Habits That Quietly Transform Your Life, Clark Kegley",
+        "url": "https://www.youtube.com/watch?v=F0qSqo3IFzw"
+      },
+      {
+        "label": "I've made $3M with my 36 startups, Marc Lou (free book)",
+        "url": "https://book.marclou.com/"
+      },
+      {
+        "label": "The Product Was Never the Hard Part",
+        "url": "https://ozzo.blog/articles/the-product-was-never-the-hard-part"
+      },
+      {
+        "label": "Why I Split My Personal Journal From My Operational Log",
+        "url": "https://ozzo.blog/articles/why-i-split-my-personal-journal-from-my-operational-log"
+      }
+    ],
+    "source": "internal",
+    "slug": "one-true-signal",
+    "content": "> **TL;DR:** On thin days my journaling rule is one true sentence, nothing more. This week I applied that rule to the rest of my work: one real message, one shared result, one honest decision at a time. Cutting input produced more than adding it.\n\n## The week started thin\n\nSome weeks arrive with a clean story. This one did not. Work was full, energy was low, and the only thing I could reliably finish was a line in a paper journal before sleep.\n\nThat constraint turned out to be the useful part.\n\nI moved the journal off the computer this month. Writing it by hand gave me more clarity than the system ever did.\n\nI restarted with one rule, from [Clark Kegley's video on journaling habits](https://www.youtube.com/watch?v=F0qSqo3IFzw): on a thin day, one true sentence is enough. Continuity matters more than a perfect entry.\n\nIn June I wrote about [splitting the journal from the operational log](https://ozzo.blog/articles/why-i-split-my-personal-journal-from-my-operational-log). That was about separating two kinds of truth. This is the smaller rule that keeps the human half alive on a bad day.\n\nBy the middle of the week I noticed I was using the same rule everywhere else.\n\n## What actually happened\n\nFive things moved, and they were all the same move.\n\n**I stopped consuming in order to decide.** I have a filter I wrote months ago: is this clarifying reality, or just consuming attention? This week I felt it work.\n\nThe more I read and watched, the less clear the next step became. Cutting input was not discipline. It was the only way to hear myself think.\n\n**I gave One Nil a real structure.** The game existed as one long document, so every decision was implicit.\n\nI split it into explicit tasks, decisions, goals, and feedback loops. Same idea, written where it can be finished instead of admired.\n\n**I made the contact page real.** I wired the contact form to Resend and sent a test. The first message that arrived was spam. It still proved the pipe: a person can now reach me, and I will see it. Mechanism first, audience later.\n\n**I shared a workout.** In July I wrote that [distribution is not a separate phase](https://ozzo.blog/articles/the-product-was-never-the-hard-part). This week one exists. The app now generates a completion card, and I posted mine with the numbers. It got four views.\n\nFour is not an audience. But the share is now a property of the product, not a task I remember to do afterwards.\n\n**I read, then applied the reading.** I am partway through How to Win Friends and Influence People. The first part is about paying attention to other people instead of performing yourself.\n\nSo I went outside for fresh air and gave the time to one real conversation.\n\nI also kept the base: sleep, food, movement. When the mind is foggy, none of the above works.\n\n## What I noticed\n\nEvery item was the same reduction. Take something fuzzy and large, then find the one true signal inside it and act on that.\n\nOne journal line. One real message. One shared result. One decision written where it can be closed. One conversation.\n\nThe week looked empty from the inside. It was the most concrete one I have had in a month, because everything in it actually left the house.\n\nThe input rule points the other way, and it is the same rule. Consuming is the fuzzy version. Producing one true thing is the clear one. I cannot do both at full volume.\n\nI noticed something about my own writing too. The useful material this week was not how I felt about the work. It was the mechanisms, and whether they worked.\n\n## The test I'm keeping\n\nBefore I add anything to a project, a page, or a plan, I name the single true signal it is supposed to produce.\n\nIf I cannot say it in one sentence, I am not deciding. I am consuming.\n\nThen I make the smallest real version of that signal leave the house: a message sent, a form that works, a result shared, a line written.\n\n```mermaid\n%%{init: { \"theme\": \"base\", \"themeVariables\": { \"fontSize\": \"13px\" } }}%%\nflowchart TD\n  A[Something fuzzy and large] --> B[Name the one true signal it should produce]\n  B --> C{Can I say it in one sentence?}\n  C -->|No| D[I am consuming, not deciding]\n  C -->|Yes| E[Make the smallest real version]\n  E --> F[Let it leave the house]\n  F --> G[One fact comes back]\n```\n\n## What is still open\n\nOne spam message is not a customer, and a working form is not demand. I have mechanisms now, which is progress, but a mechanism does not prove demand.\n\n[Marc Lou's free book](https://book.marclou.com/) is a good antidote to reading a small number as failure.\n\nHe built 36 startups, gave up once, and spent seven years failing on small bets before one worked. The shareable part is not a shortcut past that.\n\nIt is the part that makes each attempt visible enough to be judged.\n\nI did not journal every day either. One true sentence, most days, is the honest count.\n\n## Next week\n\nOne thread: put One Nil and the workout share in front of people who are not me, and write down what comes back.\n\nThe mechanisms exist. The test is whether anyone else uses them.\n\nIf you have read this far, the question I owe you is this.\n\nWhat is the one true signal your current project is supposed to produce, and can you say it in one sentence?"
+  },
+  {
     "title": "The Week I Wanted an Audience",
     "date": "2026-09-13",
     "description": "A free app can turn private learning into something people can use and respond to. It still has to be worth sharing with its first players.",
