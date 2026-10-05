@@ -5,6 +5,7 @@
     "description": "A week of new acquaintances, familiar skills in a new stack, and private tools. A practical question for builders learning to work beyond the code.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-27-skills-make-it-easy-thumbnail.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-27-skills-make-it-easy-og.png",
     "tags": [
       "Systems",
       "Personal"
@@ -19,7 +20,8 @@
     "date": "2026-09-20",
     "description": "My journaling rule is one true sentence on a thin day. This week I used it everywhere else, and cutting input produced more than adding it.",
     "url": "",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-20-one-true-signal.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-20-one-true-signal-thumbnail.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-20-one-true-signal.png",
     "tags": [
       "Personal",
       "Systems",
@@ -52,7 +54,8 @@
     "date": "2026-09-13",
     "description": "A free app can turn private learning into something people can use and respond to. It still has to be worth sharing with its first players.",
     "url": "",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-13-the-week-i-wanted-an-audience.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-13-the-week-i-wanted-an-audience-thumbnail.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-13-the-week-i-wanted-an-audience.png",
     "tags": [
       "Systems",
       "Personal",
@@ -77,7 +80,8 @@
     "date": "2026-09-06",
     "description": "I have published the same lesson four times since July and did it again this week. The interesting question is not what the lesson is. It is why writing a lesson down does nothing, and what does.",
     "url": "",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-06-the-fifth-time-i-wrote-this-down.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-06-the-fifth-time-i-wrote-this-down-thumbnail.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-09-06-the-fifth-time-i-wrote-this-down.png",
     "tags": [
       "Systems",
       "Personal",
@@ -118,7 +122,8 @@
     "date": "2026-08-30",
     "description": "I solved five problems in a row inside a virtual machine and none of them mattered. The ten minute experiment I never ran would have killed the whole path on the first evening. The cheapest test is the one that can end the project.",
     "url": "",
-    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-30-the-test-that-ends-the-project.png",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-30-the-test-that-ends-the-project-thumbnail.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-30-the-test-that-ends-the-project.png",
     "tags": [
       "SWE",
       "Systems",
@@ -152,6 +157,7 @@
     "description": "I missed the weekly article. Umami emailed to tell me no one had even loaded the page. The fix is not a better cadence. It is treating the writing as a conversation, not a deliverable.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-23-the-week-i-didnt-write.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-23-the-week-i-didnt-write.png",
     "tags": [
       "Personal",
       "Writing",
@@ -181,6 +187,7 @@
     "description": "A starter repo freezes one app's assumptions. A reference project and a small CI gate preserve the decisions that earned reuse.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-16-the-starter-repo-i-didnt-build.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-16-the-starter-repo-i-didnt-build.png",
     "tags": [
       "Tech",
       "Systems",
@@ -210,6 +217,7 @@
     "description": "Two X posts produced 26 views but no feedback. A feedback ladder shows how a solo developer turns attention into evidence for the next decision.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-09-a-post-is-not-distribution.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-09-a-post-is-not-distribution.png",
     "tags": [
       "Personal",
       "Writing",
@@ -239,6 +247,7 @@
     "description": "Five days after publishing my six-week Rails portfolio plan, I changed it. The next app now needs an external problem before it earns a cycle.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-02-a-pitch-is-not-proof.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-08-02-a-pitch-is-not-proof.png",
     "tags": [
       "Personal",
       "Systems",
@@ -288,6 +297,7 @@
     "description": "I followed my own six-week plan for bet 1 and shipped the real thing in three days. The plan was still wrong, and I did not notice until it had already cost a week of feedback.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-26-a-plan-is-not-a-pitch.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-26-a-plan-is-not-a-pitch.png",
     "tags": [
       "Personal",
       "Systems",
@@ -313,6 +323,7 @@
     "description": "I took Synergym to the payment flow and had no idea how to show it to anyone. The fix was not a better channel. It was not treating distribution as a separate phase.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-19-the-product-was-never-the-hard-part.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-19-the-product-was-never-the-hard-part.png",
     "tags": [
       "Personal",
       "Rails"
@@ -341,6 +352,7 @@
     "description": "Sending ten emails felt like the hard part. A week later the real one showed up disguised as a phone number, and then again as my own name on a page I had kept empty.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-11-the-vulnerable-move-has-layers.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-11-the-vulnerable-move-has-layers.png",
     "tags": [
       "Personal",
       "Systems"
@@ -361,6 +373,7 @@
     "description": "When a task gets human, my instinct is to build a system instead. This week I sent the emails by hand and logged what actually came back.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-04-i-almost-automated-the-hardest-part.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-07-04-i-almost-automated-the-hardest-part.png",
     "tags": [
       "Personal",
       "Systems"
@@ -376,6 +389,7 @@
     "description": "I use AI for search, reminders, and structure, not for the parts where the friction is the point.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-28-the-things-im-not-using-ai-for.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-28-the-things-im-not-using-ai-for.png",
     "tags": [
       "Tech",
       "Writing",
@@ -392,6 +406,7 @@
     "description": "I almost split two classes into their own folders to \"enforce\" a bounded context. Instead I wrote one test. It caught a real violation on its first run.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-21-bounded-context-test-not-folder.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-21-bounded-context-test-not-folder.png",
     "tags": [
       "Architecture",
       "Rails",
@@ -408,6 +423,7 @@
     "description": "I knew User.rb was a problem. 730 lines, roles scattered everywhere, unit conversions duplicated across four methods. I could feel the coupling. Connascence gave me the vocabulary to name it and rank it.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-13-connascence-the-coupling-your-rails-app-cant-name.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-13-connascence-the-coupling-your-rails-app-cant-name.png",
     "tags": [
       "Architecture",
       "Rails",
@@ -424,6 +440,7 @@
     "description": "My daily note had quietly stopped being a journal. It was performing organisation instead of capturing reality. This is the correction.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-04-draft-personal-journal-vs-operational-log.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-06-04-draft-personal-journal-vs-operational-log.png",
     "tags": [
       "Systems",
       "Personal"
@@ -439,6 +456,7 @@
     "description": "I had a 874-line controller and no architecture document. Reading Fundamentals of Software Architecture forced the first explicit trade-off decisions this codebase had ever had.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-31-rails-architecture-accumulated-by-default.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-31-rails-architecture-accumulated-by-default.png",
     "tags": [
       "Architecture",
       "Rails",
@@ -455,6 +473,7 @@
     "description": "I wrote the wrong article this week and used that mistake to define a stricter rule for what belongs on ozzo.blog versus product channels.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-22-writing-without-hiding.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-22-writing-without-hiding.png",
     "tags": [
       "Tech",
       "Writing",
@@ -471,6 +490,7 @@
     "description": "I don't have a CMS. I have markdown files and a CI script that reads them. Here's how that happened and why Sunday is now the only deadline I track.",
     "url": "",
     "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-17-the-vault-is-my-cms.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-05-17-the-vault-is-my-cms.png",
     "tags": [
       "Tech",
       "Systems"
