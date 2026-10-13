@@ -1,5 +1,26 @@
 [
   {
+    "title": "Make Time for It",
+    "date": "2026-10-11",
+    "description": "A grayscale phone, a jar of plans for two, and a shift toward taking the initiative. What can I change to make time for something I care about?",
+    "url": "",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-10-11-make-time-for-it-thumbnail.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-10-11-make-time-for-it.png",
+    "tags": [
+      "Personal",
+      "Systems"
+    ],
+    "references": [
+      {
+        "label": "Neuroscientist Explains: WORST vs BEST Dopamine Habits",
+        "url": "https://www.youtube.com/watch?v=0S0aCIoJUl8"
+      }
+    ],
+    "source": "internal",
+    "slug": "make-time-for-it",
+    "content": "On Monday I set my phone to stay in grayscale. At the weekend, I made plans and put in the effort to arrive early. Looking back, I see two attempts to give the things I care about a more deliberate place in my time.\n\nThe week ended with a small app for my fiancée and me. We wrote down things we wanted to do together, then made a page that draws an idea from a jar. It gives us a way to choose. We still have to make time for what comes out.\n\n## A less inviting phone\n\nMy iPhone XR feels old by today's standards, with 87% battery health. That already makes spending too long on it less convenient. I added permanent grayscale to make it less inviting too.\n\nI wanted to use the phone I already had more deliberately. Changing a setting was something I could try immediately.\n\nThis week's viewing included a [video about dopamine and habits](https://www.youtube.com/watch?v=0S0aCIoJUl8). The practical experiment for me was the phone setting. I do not yet have a screen-time result to report.\n\n## Making room for a response\n\nI finished the boards feature in One Nil, the football game I have been building. I am preparing to launch the beta soon, with social previews as part of that work.\n\nI also added a contact page to Synergym so someone with a suggestion has a place to send it. I want feedback to have a route back into the work.\n\nI have written before about sharing work and making contact possible. These additions give that work somewhere to go. The beta still has to reach people, and the contact page still has to bring back something I can learn from.\n\n## A domain reached further than I expected\n\nI changed Synergym's domain from synergym.fit to synergym.app. I underestimated how much was attached to the old address.\n\nMail integrations, connected services, and accounts using the old domain made the change more involved. The address was part of how other services recognised the app.\n\nBefore another move, I want to list those dependencies alongside the public links. Making time for something also means understanding the work I am taking on. This change asked for more of it than I expected.\n\n## Taking the initiative offline\n\nAt the weekend I spent time outside and tried to change something about how I show up. I usually arrive late and take a passive approach. This time I made plans and put in the effort to arrive early.\n\nThat was the change I wanted to notice: taking the initiative and following through on an arrangement I had made with someone.\n\nAfter my usual finance review, my fiancée and I made a list of things we wanted to do together. We kept the ideas in a Markdown file and made the little page that draws one at random.\n\nThe app draws from things we already said we wanted to do. The useful result will be an experience together. It can help with choosing; we have to make the plan and show up for it.\n\n## What I want to keep\n\nThe most concrete change this week was how I approached the weekend. I made plans and tried to arrive early. The phone setting and the jar are experiments in making the choices I want easier to act on.\n\nThe question I want to try is: **what can I change to make time for something I care about?** This week I changed a setting, made an arrangement, and gave us a way to choose. Each asks for something more specific than a general intention.\n\nThere are outcomes still to see. I want to find out whether grayscale helps me spend less time on the phone, whether the beta brings useful feedback, and whether we make time for an idea drawn from the jar.\n\nWhat small change has helped you make time for something you care about?"
+  },
+  {
     "title": "What Carries Forward",
     "date": "2026-10-04",
     "description": "A housing app built on existing tools, books still to read, and a first finance review. A question for turning what you learn and build into something useful for the next problem.",
