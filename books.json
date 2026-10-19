@@ -1,5 +1,29 @@
 [
   {
+    "title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "cover": "https://covers.openlibrary.org/b/isbn/9780671027032-L.jpg",
+    "status": "reading",
+    "rating": 0,
+    "tags": [
+      "Life"
+    ],
+    "slug": "how-to-win-friends-and-influence-people",
+    "url": "",
+    "lesson": "",
+    "notes": "",
+    "date": "",
+    "problem": "",
+    "concept": "",
+    "decision": "",
+    "implementation": "",
+    "effect": "",
+    "trade_off": "",
+    "tldr": "",
+    "deep_dive": "",
+    "quotes": []
+  },
+  {
     "title": "Learning Domain-Driven Design",
     "author": "Vlad Khononov",
     "cover": "https://www.oreilly.com/library/cover/9781098100124/1200w630h/",
