@@ -1,5 +1,39 @@
 [
   {
+    "title": "The Screen Still Had to Come Off",
+    "date": "2026-11-01",
+    "description": "A tablet guide made someone else's experience available. Opening the device and working through a manual hardware step began turning it into my own.",
+    "url": "",
+    "thumbnail": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-11-01-the-screen-still-had-to-come-off-thumbnail-v3.png",
+    "og_image": "https://cdn.jsdelivr.net/gh/ozzgio/portfolio-data@main/images/2026-11-01-the-screen-still-had-to-come-off.png",
+    "tags": [
+      "Software",
+      "Learning",
+      "Life"
+    ],
+    "references": [
+      {
+        "label": "Quick Help: Samsung Tab A8 (SM-X200) Frp Bypass",
+        "url": "https://www.youtube.com/watch?v=Sa2GWz_i3lg"
+      },
+      {
+        "label": "Enable Banking: Quick Start",
+        "url": "https://enablebanking.com/docs/api/quick-start/"
+      },
+      {
+        "label": "Enable Banking: Get account transactions",
+        "url": "https://enablebanking.com/docs/api/reference/#get-account-transactions"
+      },
+      {
+        "label": "Someone Uses It Every Day",
+        "url": "https://ozzo.blog/articles/someone-uses-it-every-day"
+      }
+    ],
+    "source": "internal",
+    "slug": "the-screen-still-had-to-come-off",
+    "content": "To open the tablet, I needed to warm the glue and detach the screen. The video gave me access to someone else's experience. Working through the hardware was where I began building my own.\n\n> **TL;DR:** A tablet guide helped me attempt unfamiliar hardware work. New connections brought account records into my app. Each resource became useful through a specific task, with handling and checking still left to me.\n\n## Opening the tablet\n\nI started working on it on Tuesday. Opening it was part of getting it unlocked, and the step I most needed help with was separating the screen after warming the adhesive.\n\nI followed [Quick Help's tablet video](https://www.youtube.com/watch?v=Sa2GWz_i3lg). Having a procedure to refer to made an unfamiliar job something I could attempt.\n\nWhat struck me was the complexity of the hardware inside such a small tablet. Opening it brought me into contact with the parts behind the screen, beyond the device I normally interact with from the outside.\n\nI also needed to perform the test-point configuration manually. Getting the screen off was one part of the job; working through that configuration was another. The physical work continued inside the device.\n\nUnlocking it required me to deal with the internal hardware as well as getting the screen off.\n\nI spend a lot of time making software, including tools I use myself. With this job, part of reaching the result involved handling the thing itself. That was what interested me about it.\n\nBy the very next day, the tablet was unlocked.\n\n## Someone had made the work visible\n\nIn [Someone Uses It Every Day](https://ozzo.blog/articles/someone-uses-it-every-day), I wrote about how close an explanation can be while I remain unaware of it. This week gave that question a practical setting.\n\nThe difference here was having an actual device to work on. Someone had recorded a procedure, and I could use it while attempting a task that required skills I was still learning.\n\nThat made the knowledge behind the video interesting to me too. A person had understood the job well enough to demonstrate it. Recording that work made some of their experience available to someone else.\n\nIt made me think about AI and the information it can work with. So much of what I ask software to help with is already described somewhere: documentation, forms, FAQs, pages explaining how a system behaves.\n\nSomeone had recorded the procedure, so I could learn from it. I still had to carry out the hardware work myself.\n\nThat is the part I want to understand better as these tools improve.\n\n> What knowledge has already been made available, and what still depends on direct experience with the thing I am trying to change?\n\nThe guide had a specific use for me: I needed to get through an unfamiliar part of the job. That gives me a practical standard for an explanation. Can I use it to take the next step in the situation it describes?\n\n## Bringing the numbers into my app\n\nAnother resource this week led me to [Enable Banking](https://enablebanking.com/docs/api/quick-start/). I used it to bring bank transactions straight into my private finance app.\n\nBefore, I downloaded and imported a CSV file manually. Now the app could ask for the transactions itself. My weekly review still used the records saved in my file system.\n\nThe [transaction reference](https://enablebanking.com/docs/api/reference/#get-account-transactions) describes what the app can request. I still needed to check whether the returned records covered the week I was reviewing.\n\nI also needed to check whether a payment was already saved before adding it again. Changing the input had to preserve the history I already relied on. Those checks were still part of the work at the end of the week.\n\nThe investment account needed a different connection. A small Java program supplied the information my app needed. By the end of the week, I had that route working too.\n\nThe app could show what investments I owned, how much of each I had and the average price paid. It could not tell me every past purchase or all the extra charges. For that, I still needed the older records.\n\nThe improvement had a clear purpose: to remove a manual step from a review I already do. That gives me something concrete to judge the connection by, beyond whether it can return a list.\n\nFor another unfamiliar task, I would ask which part I actually need help with. For the tablet, it was opening the screen and working with the hardware. For the app, it was getting records I could use for my review.\n\n## Ending the week outside\n\nOn Sunday, I went for a run in the sun with a friend. I enjoyed it and found it refreshing. That was a good way to finish the week.\n\nWhat stayed with me was how little that enjoyment needed. Being active outdoors and spending time with someone were worthwhile parts of the week alongside the things I worked on.\n\nSome of the things that make a week better are already there, freely available. I just need to give them some time.\n\nWhat is something you recently learned by doing it with your hands?"
+  },
+  {
     "title": "What My Free Time Was For",
     "date": "2026-10-25",
     "description": "October 19–25: training continued, the archive became easier to browse, and a repaired job produced reading digests. Reading itself remained an intention to make room for.",
